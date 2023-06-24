@@ -43,26 +43,24 @@ class PermissionsRoleSeeder extends Seeder
         // $permission19 = Permission::create(['name' => 'kelola_rekomendasi']);
         // $permission19 = Permission::create(['name' => 'kelola_bypass']);
         // $permission19 = Permission::create(['name' => 'kelola_laporan']);
-        $permission19 = Permission::create(['name' => 'kelola_revisi']);
+        // $permission19 = Permission::create(['name' => 'kelola_revisi']);
         
 
 
         // create roles and assign existing permissions
-        // $role1 = Role::create(['name' => 'admin']);
-        
-        // $role2 = Role::create(['name' => 'personnel']);
-
-        // $role3 = Role::create(['name' => 'student']);
+        $role1 = Role::create(['name' => 'super admin']);
+        $role2 = Role::create(['name' => 'operator']);
+        $role3 = Role::create(['name' => 'pengemudi']);
+        $role4 = Role::create(['name' => 'pelapor']);
 
         // create demo users
+        $user = User::create([
+            'username' => 'admin',
+            'email' => 'admin@app.id',
+            'password' => Hash::make('password')
+        ]);
 
-        // $user = User::create([
-        //     'username' => 'admin',
-        //     'email' => 'admin@app.id',
-        //     'password' => Hash::make('password')
-        // ]);
-
-        // $user->assignRole($role1);
+        $user->assignRole($role1);
 
         // $user = User::create([
         //     'username' => 'personil',

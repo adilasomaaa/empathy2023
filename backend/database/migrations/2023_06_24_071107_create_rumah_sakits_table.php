@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reg_file_templates', function (Blueprint $table) {
+        Schema::create('rumah_sakit', function (Blueprint $table) {
             $table->id();
-            $table->string('template_name');
-            $table->bigInteger('department_id')->unsigned();
-            $table->boolean('is_active');
+            $table->string('nama')->nullable();
+            $table->string('lokasi')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
-
-            
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reg_file_templates');
+        Schema::dropIfExists('rumah_sakit');
     }
 };

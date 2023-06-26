@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RumahSakitController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,3 +20,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::apiResource('rumah_sakit',RumahSakitController::class);
+
+Route::apiResource('mobil',MobilController::class);
+Route::prefix('mobil')->group(function(){
+    Route::get('{rumah_sakit_id}/byRumah_sakit', [MobilController::class, 'byRumah_sakit']);
+});
+
+Route::apiResource('pemesanan',PemesananController::class);
+Route::prefix('pemesanan')->group(function(){
+    Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRumah_sakit']);
+});

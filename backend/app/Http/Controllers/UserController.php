@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $User = User::get();
-        return UserResource::collection($User);
+        $user = User::get();
+        return UserResource::collection($user);
     }
     
     public function store(Request $request)
@@ -20,7 +20,8 @@ class UserController extends Controller
         request()->validate([
             'username' => 'required',
             'email' => 'required|email', 
-            'password' => 'required'
+            'password' => 'required',
+            'role' => 'required'
 		]);
         $user = User::create([
             'username' => request('username'),
@@ -29,66 +30,43 @@ class UserController extends Controller
         ]);
         // $data_user['password']= bcrypt($request->password);
         // $user = User::create($data_user);
-        $user->assignRole('admin');
+        $user->assignRole($request->role);
 		if($user) {
             return response()->json([
-                'data' => $user,
-                // 'data' => DepartmentResource::make($department),
-                'message' => 'Berhasil menambah data'
+                'info' => 'created'
             ], 200);
         }
     }
 
     
-    public function show(User $User)
+    public function show(User $user)
     {
-        return UserResource::make($User);
+        return UserResource::make($user);
     }
     
-    public function update(Request $request, User $User)
+    public function update(Request $request, User $user)
     {
-        $User->update([
+        $user->update([
             'username' => request('username'),
             'email' => request('email'),
         ]);
         if($request->password) {
-            $User->update([
+            $user->update([
                 'password' => Hash::make(request('password')),
             ]);
         }
-        if ($User) {
+        if ($user) {
             return response()->json([
-                'message' => 'Berhasil perbaharui',
-                'data' => $User
+                'info' => 'updated',
             ],200);
         }
     }
 
-    public function updateFoto(Request $request, User $user)
+    public function destroy(User $user)
     {
-        $request->validate([
-            'foto' => 'required'
-        ]);
-        if($request->foto) {
-            $getphoto = $request->foto;
-            $imageName = rand() . '.' .$getphoto->getClientOriginalExtension();
-            $getphoto->move(public_path('foto/user'), $imageName);
-            User::findOrFail($user->id)->update([
-                'foto' => $imageName,
-            ]);
-        };
+        $user->delete();
         return response()->json([
-            'message' => 'Foto user berhasil diperbaharui'
-        ]);
-    }
-
-    public function destroy(User $User)
-    {
-        $data = User::find($User->user_id)->delete();
-        // $data = $student->delete();
-        return response()->json([
-            'message' => 'Berhasil dihapus',
-            'data' => $data
+            'info' => 'Berhasil dihapus',
         ]);
     }
 
@@ -96,10 +74,9 @@ class UserController extends Controller
     {
             $id = request('q');
             $ids = explode(",", $id);
-            $User = User::whereIn('id', $ids)->delete();
+            $user = User::whereIn('id', $ids)->delete();
             return response()->json([
-                'message'=> "Berhasil menghapus data yang dipilih",
-                'User' => $User,
+                'info'=> "Berhasil menghapus data yang dipilih",
             ], 200);  
     }
 

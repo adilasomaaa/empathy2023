@@ -3,6 +3,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RumahSakitController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,13 +20,19 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::get('/permissions', [AuthController::class, 'getAllPermissions']);
 });
 
+// rumah_sakit
 Route::apiResource('rumah_sakit',RumahSakitController::class);
 
+// user
+Route::apiResource('user',UserController::class);
+
+// mobil
 Route::apiResource('mobil',MobilController::class);
 Route::prefix('mobil')->group(function(){
     Route::get('{rumah_sakit_id}/byRumah_sakit', [MobilController::class, 'byRumah_sakit']);
 });
 
+// pemesanan
 Route::apiResource('pemesanan',PemesananController::class);
 Route::prefix('pemesanan')->group(function(){
     Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRumah_sakit']);

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RumahSakitController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,8 @@ Route::apiResource('rumah_sakit',RumahSakitController::class);
 
 // user
 Route::apiResource('user',UserController::class);
+// operator
+Route::apiResource('operator',OperatorController::class);
 
 // mobil
 Route::apiResource('mobil',MobilController::class);

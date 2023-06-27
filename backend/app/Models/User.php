@@ -45,19 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function alumni()
+    public function operator()
     {
-        return $this->hasMany(Alumni::class,'user_id');
-    }
-
-    public function personnel()
-    {
-        return $this->hasOne(Personnel::class, 'user_id');
-    }
-
-    public function student()
-    {
-        return $this->hasOne(Student::class, 'user_id');
+        return $this->hasOne(operator::class, 'user_id');
     }
 
     public function getPermissionAttribute()

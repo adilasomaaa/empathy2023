@@ -22,6 +22,13 @@ export const useAuth = defineStore({
                 const getRole = await axios.get('api/auth-role');
                 this.role = getRole.data;
                 // this.ability = getAbility.data;
+                if(getRole.data == 'operator'){
+                    const getDetail = await axios.get(`api/operator/${response.data.id}/byUser`);
+                    this.detail_user = getDetail.data.data
+                // }else if(getRole.data == 'student') {
+                //     const getDetail = await axios.get(`api/student/get-user/${response.data.id}`);
+                //     this.detail_user = getDetail.data.data
+                }
                 this.user = response.data;
                 this.authenticated = true;
                 return response.data;

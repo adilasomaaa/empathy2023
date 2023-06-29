@@ -16,6 +16,15 @@ class OperatorController extends Controller
         return OperatorResource::collection($user);
     }
 
+    public function byUser($user)
+    {
+        $data = Operator::where('user_id', $user)->first();
+        return response()->json([
+            'info' => 'seccess',
+            'data' => OperatorResource::make($data)
+        ], 200);
+    }
+
     public function store(Request $request)
     {
         request()->validate([
@@ -26,7 +35,7 @@ class OperatorController extends Controller
         ]);
         $op = $request->validate([
             'nama' => 'required',
-            'alamat' => 'required|email',
+            'alamat' => 'required',
             'jk' => 'required',
             'nohp' => 'required',
             'rumah_sakit_id' => 'required',
@@ -54,7 +63,7 @@ class OperatorController extends Controller
     {
         $op = $request->validate([
             'nama' => 'required',
-            'alamat' => 'required|email',
+            'alamat' => 'required',
             'jk' => 'required',
             'nohp' => 'required',
             'rumah_sakit_id' => 'required',

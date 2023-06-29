@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex items-center justify-between flex-wrap gap-4">
-            <h2 class="text-xl">Master Rumah Sakit</h2>
+            <h2 class="text-xl">Master Kenderaan</h2>
             <div class="flex sm:flex-row flex-col sm:items-center sm:gap-3 gap-4 w-full sm:w-auto">
                 <div class="flex gap-3">
                     <div>
@@ -97,13 +97,14 @@
             </div>
         </div>
         <div class="mt-5 panel p-0 border-0 overflow-hidden">
+
             <template v-if="displayType === 'list'">
                 <div class="table-responsive">
                     <table class="table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Lokasi</th>
+                                <th>Nomor Polisi</th>
                                 <th>Dibuat pada</th>
                                 
                                 <th class="!text-center">Actions</th>
@@ -146,7 +147,7 @@
                                             <div>{{ contact.nama }}</div>
                                         </div>
                                     </td>
-                                    <td>{{ contact.lokasi }}</td>
+                                    <td>{{ contact.no_plat }}</td>
                                     
                                     <td class="whitespace-nowrap">{{ contact.created_at }}</td>
                                     <td>
@@ -162,139 +163,7 @@
                 </div>
             </template>
         </div>
-        <template v-if="displayType === 'grid'">
-            <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full">
-                <template v-for="contact in filterdContactsList" :key="contact.id">
-                    <div class="bg-white dark:bg-[#1c232f] rounded-md overflow-hidden text-center shadow relative">
-                        <div class="bg-white/40 rounded-t-md bg-[url('/assets/images/notification-bg.png')] bg-center bg-cover p-6 pb-0">
-                            <template v-if="contact.path">
-                                <img class="object-contain w-4/5 max-h-40 mx-auto" :src="`/assets/images/${contact.path}`" />
-                            </template>
-                        </div>
-                        <div class="px-6 pb-24 -mt-10 relative">
-                            <div class="shadow-md bg-white dark:bg-gray-900 rounded-md px-2 py-4">
-                                <div class="text-xl">{{ contact.name }}</div>
-                                <div class="text-white-dark">{{ contact.role }}</div>
-                                <div class="flex items-center justify-between flex-wrap mt-6 gap-3">
-                                    <div class="flex-auto">
-                                        <div class="text-info">{{ contact.posts }}</div>
-                                        <div>Posts</div>
-                                    </div>
-                                    <div class="flex-auto">
-                                        <div class="text-info">{{ contact.following }}</div>
-                                        <div>Following</div>
-                                    </div>
-                                    <div class="flex-auto">
-                                        <div class="text-info">{{ contact.followers }}</div>
-                                        <div>Followers</div>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <ul class="flex space-x-4 rtl:space-x-reverse items-center justify-center">
-                                        <li>
-                                            <a href="javascript:;" class="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24px"
-                                                    height="24px"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="w-4 h-4"
-                                                >
-                                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;" class="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24px"
-                                                    height="24px"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="w-4 h-4"
-                                                >
-                                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;" class="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24px"
-                                                    height="24px"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="w-4 h-4"
-                                                >
-                                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                                    <circle cx="4" cy="4" r="2"></circle>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;" class="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24px"
-                                                    height="24px"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="w-4 h-4"
-                                                >
-                                                    <path
-                                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                                    ></path>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mt-6 grid grid-cols-1 gap-4 ltr:text-left rtl:text-right">
-                                <div class="flex items-center">
-                                    <div class="flex-none ltr:mr-2 rtl:ml-2">Email :</div>
-                                    <div class="truncate text-white-dark">{{ contact.email }}</div>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="flex-none ltr:mr-2 rtl:ml-2">Phone :</div>
-                                    <div class="text-white-dark">{{ contact.phone }}</div>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="flex-none ltr:mr-2 rtl:ml-2">Address :</div>
-                                    <div class="text-white-dark">{{ contact.location }}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 flex gap-4 absolute bottom-0 w-full ltr:left-0 rtl:right-0 p-6">
-                            <button type="button" class="btn btn-outline-primary w-1/2" @click="editUser(contact)">Edit</button>
-                            <button type="button" class="btn btn-outline-danger w-1/2" @click="deleteUser(contact)">Delete</button>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </template>
+        
 
         <!-- add contact modal -->
         <TransitionRoot appear :show="addContactModal" as="template">
@@ -350,53 +219,22 @@
                                 <div class="p-5">
                                     <form @submit.prevent="saveUser">
                                         <div class="mb-5">
-                                            <label for="name">Nama Rumah Sakit</label>
-                                            <input id="name" type="text" placeholder="Masukkan Nama Rumah Sakit" class="form-input" v-model="params.nama" />
+                                            <label for="name">Nama Kenderaan</label>
+                                            <input id="name" type="text" placeholder="Masukkan Nama Kenderaan" class="form-input" v-model="params.nama" />
                                         </div>
                                         <div class="mb-5">
-                                            <label for="email">Lokasi</label>
-                                            <input id="email" type="text" placeholder="Masukkan Alamat Rumah Sakit" class="form-input" v-model="params.lokasi" />
+                                            <label for="email">Nomor Polisi</label>
+                                            <input id="email" type="text" placeholder="Masukkan Nomor Polisi" class="form-input" v-model="params.no_plat" />
                                         </div>
                                         <div class="mb-5">
-                                            <label for="ctnFile">Foto Rumah Sakit</label>
+                                            <label for="email">Harga</label>
+                                            <input id="email" type="number" placeholder="Masukkan Harga Sekali Pesan" class="form-input" v-model="params.harga" />
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="ctnFile">Foto Kenderaan</label>
                                             <input id="ctnFile" @change="onphoto" type="file" class="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file:ml-5 file:text-white file:hover:bg-primary"  />
                                         </div>
-                                        <div class="flex">
-                                            <div class="w-1/2">
-                                                <div class="mb-5">
-                                                    <label for="number">Latitude</label>
-                                                    <input id="number" type="text" placeholder="Enter Latitude" disabled class="form-input" v-model="position.lat" />
-                                                </div>
-                                            </div>
-                                            <div class="w-1/2">
-                                                <div class="mb-5">
-                                                    <label for="number">Longtitude</label>
-                                                    <input id="number" type="text" placeholder="Enter Longtitude" disabled class="form-input" v-model="position.lng" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <l-map 
-                                                ref="map" 
-                                                style="width: 100%; height:200px" 
-                                                :zoom="maps.zoom" 
-                                                :center="coordinates"
-                                                @click="onMapClick"
-                                                >
-                                                <l-tile-layer
-                                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                                ></l-tile-layer>
-                                                <l-marker
-                                                    visible
-                                                    draggable
-                                                    :icon="icon"
-                                                    :lat-lng.sync="position"
-                                                    @dragstart="dragging = true"
-                                                    @dragend="dragging = false"
-                                                    >
-                                                </l-marker>
-                                            </l-map>
-                                        </div>
+                                        
                                         
                                         <div class="flex justify-end items-center mt-8">
                                             <button type="button" class="btn btn-outline-danger" @click="addContactModal = false">Cancel</button>
@@ -415,7 +253,8 @@
     </div>
 </template>
 <script lang="ts" setup>
-    
+    import { mapState } from 'pinia'
+    import { useAuth } from '@/stores/auth'
     import { ref, onMounted, watch, computed } from 'vue';
     import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogOverlay } from '@headlessui/vue';
     import Swal from 'sweetalert2';
@@ -426,10 +265,10 @@
     const defaultParams = ref({
         id: null,
         nama: '',
-        lokasi: '',
-        lat: '',
-        lng: '',
-        foto:''
+        no_plat: '',
+        harga: '',
+        foto: '',
+        rumah_sakit_id:''
     });
 
     const position = ref({})
@@ -441,7 +280,7 @@
         center: [0.78566373548599999, 122.865568821],
         markerLatLng: [51.504, -0.159]
     })
-    const coordinates = ref(null)
+    const store = useAuth()
     const displayType = ref('list');
     const addContactModal = ref(false);
     const params = ref(JSON.parse(JSON.stringify(defaultParams.value)));
@@ -451,77 +290,25 @@
     const address = ref('')
     const theErrors = ref([])
     const url = ref('')
-
-    onMounted(() => {
-        searchContacts();
-        getRumahSakit()
-    });
+    const user:any = computed(() => store.$state.detail_user)
 
     onMounted(async () => {
-      try {
-        const result = await getLocation();
-        coordinates.value = result;
-        position.value = result   
-      } catch (error) {
-        alert(error);
-      }
+        searchContacts();
+        getKenderaan();
+        
     });
 
-    async function getLocation() {
-      try {
-        const options = {
-          enableHighAccuracy: true,
-          timeout: Infinity,
-          maximumAge: 0
-        };
-
-        const position : any = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject, options);
-        });
-        
-        return {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        }
-
-        
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
-    
+    watch(user, () => {
+        getKenderaan()
+    })
 
     const searchContacts = () => {
         filterdContactsList.value = contactList.value.filter((d) => d.name.toLowerCase().includes(searchUser.value.toLowerCase()));
     };
 
-    const onMapClick = (response :any) => {
-        // place the marker on the clicked spot
-            position.value = response.latlng;  
-            params.value.lat = response.latlng.lat
-            params.value.lng = response.latlng.lng          
-    }      
 
-    const getAddress = async () => { 
-        let address = "Unresolved address";
-        try {
-            const { lat, lng } = position.value;
-            const result = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
-            );
-            if (result.status === 200) {
-            const body = await result.json();
-            address = body.display_name;
-            }
-        } catch (e) {
-            console.error("Reverse Geocode Error->", e);
-        }
-        
-        return address;
-    }
-
-    const getRumahSakit = async () => {
-        let response = await axios.get('api/rumah_sakit')
+    const getKenderaan = async () => {
+        let response = await axios.get('api/mobil/' + user.value.rumah_sakit_id.id + '/byRumah_sakit')
         contactList.value = response.data.data
     }
 
@@ -552,10 +339,10 @@
             showMessage('Nama is required.', 'error');
             return true;
         }
-        if (!params.value.lokasi) {
-            showMessage('Lokasi is required.', 'error');
-            return true;
-        }
+        // if (!params.value.lokasi) {
+        //     showMessage('Lokasi is required.', 'error');
+        //     return true;
+        // }
         // if (!params.value.lat) {
         //     showMessage('Latitude is required.', 'error');
         //     return true;
@@ -570,14 +357,14 @@
             //add user
             const form = new FormData;
             form.append('nama', params.value.nama)
-            form.append('lokasi', params.value.lokasi)
+            form.append('no_plat', params.value.no_plat)
+            form.append('harga', params.value.harga)
             form.append('foto', params.value.foto)
-            form.append('lat', params.value.lat)
-            form.append('lng', params.value.lng)
-            axios.post('api/rumah_sakit/' + params.value.id + '?_method=PUT', form).then(() => {
+            form.append('rumah_sakit_id', user.value.rumah_sakit_id.id)
+            axios.post('api/mobil/' + params.value.id + '?_method=PUT', form).then(() => {
                 showMessage('User has been saved successfully.');
                 addContactModal.value = false;
-                getRumahSakit()
+                getKenderaan()
                 const toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-start',
@@ -603,7 +390,7 @@
                         customClass: {
                             popup: `color-success`
                         },
-                        target: document.getElementById('success-toast')
+                        target: document.getElementById('danger-toast')
                     });
                     toast.fire({
                         title: err,
@@ -613,14 +400,14 @@
             //add user
             const form = new FormData;
             form.append('nama', params.value.nama)
-            form.append('lokasi', params.value.lokasi)
+            form.append('no_plat', params.value.no_plat)
+            form.append('harga', params.value.harga)
             form.append('foto', params.value.foto)
-            form.append('lat', params.value.lat)
-            form.append('lng', params.value.lng)
-            axios.post('api/rumah_sakit', form).then(() => {
+            form.append('rumah_sakit_id', user.value.rumah_sakit_id.id)
+            axios.post('api/mobil', form).then(() => {
                 showMessage('User has been saved successfully.');
                 addContactModal.value = false;
-                getRumahSakit()
+                getKenderaan()
                 const toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-start',
@@ -646,7 +433,7 @@
                         customClass: {
                             popup: `color-danger`
                         },
-                        target: document.getElementById('success-toast')
+                        target: document.getElementById('danger-toast')
                     });
                     toast.fire({
                         title: err,
@@ -659,8 +446,8 @@
     };
 
     const deleteUser = (user: any = null) => {
-        axios.delete(`api/rumah_sakit/${user.id}`, user).then(() => {
-            getRumahSakit()
+        axios.delete(`api/mobil/${user.id}`, user).then(() => {
+            getKenderaan()
             const toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-start',

@@ -37,25 +37,44 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nama' => 'required',
+            // 'nama' => 'required',
             'lokasi' => 'required',
             'lat' => 'required',
             'lng' => 'required',
             'nohp' => 'required',
             'rumah_sakit_id' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg,png',
+            // 'deskrpsi' => 'required',
+            // 'foto' => 'required|mimes:jpg,jpeg,png',
         ]);
-        if (request()->file('foto')) {
-            $file = request()->file('foto');
-            $name = $file->store("pemesanan");
-            $data['foto'] = $name;
-        } else {
-            $data['foto'] = request()->file('foto');
-        }
-        $data['deskripsi'] = $request->deskripsi;
+        // if (request()->file('foto')) {
+        //     $file = request()->file('foto');
+        //     $name = $file->store("pemesanan");
+        //     $data['foto'] = $name;
+        // } else {
+        //     $data['foto'] = request()->file('foto');
+        // }
+        // $data['deskripsi'] = $request->deskripsi;
+        $blobData = $request->file('deskrpsi');
+        $filename = $blobData->getClientMimeType();
+        $storagePath = public_path()."/assets/";
+        // $url = $req->audioUrl;
+        // $audio= $blobData;
+        
+        // $data = base64_decode($audio);
+        $file = uniqid() . '.webm';
+        // $success = file_put_contents($file, $data);
+        
+        // $filename = uniqid() . '.wav';
+        $data['deskrpsi'] = $file;
+        $blobData = mb_convert_encoding($blobData, 'UTF-8', 'auto');
+        $binaryData = file_get_contents($blobData);
+        
+        file_put_contents($storagePath . '/' . $file, $blobData);
+
         Pemesanan::create($data);
         return response()->json([
-            'info' => 'created'
+            'info' => 'created',
+            'data' => $binaryData
         ], 200);
     }
 

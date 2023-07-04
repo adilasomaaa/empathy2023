@@ -1,144 +1,617 @@
 <template>
-    <div
-        class="flex justify-center items-center min-h-screen bg-[url('/assets/images/map.svg')] dark:bg-[url('/assets/images/map-dark.svg')] bg-cover bg-center"
-    >
-        <div class="panel sm:w-[480px] m-6 max-w-lg w-full">
-            <h2 class="font-bold text-2xl mb-5">
-                <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary"
-                >
-                    <path
-                        opacity="0.5"
-                        d="M5 8.51464C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51464C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C7.23416 16.2499 5 12.0844 5 8.51464Z"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    />
-                    <path
-                        d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    />
-                    <path
-                        d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 19.9853 17.5228 22 12 22C6.47715 22 2 19.9853 2 17.5C2 16.7816 2.37412 16.1025 3.03947 15.5"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                    />
-                </svg>
-                Contact Us
-            </h2>
-            <p class="mb-7">Submit your queries and we will get back to you as soon as possible.</p>
-            <form class="space-y-4" @submit.prevent="router.push('/')">
-                <div class="relative">
-                    <span class="absolute ltr:left-2 rtl:right-2 top-2.5 text-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <circle cx="12" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
-                            <ellipse opacity="0.5" cx="12" cy="17" rx="7" ry="4" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </span>
-                    <input type="text" class="form-input ltr:pl-8 rtl:pr-8" placeholder="Name" />
-                </div>
-                <div class="relative">
-                    <span class="absolute ltr:left-2 rtl:right-2 top-2.5 text-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 12.7215 17.8726 13.4133 17.6392 14.054C17.5551 14.285 17.4075 14.4861 17.2268 14.6527L17.1463 14.727C16.591 15.2392 15.7573 15.3049 15.1288 14.8858C14.6735 14.5823 14.4 14.0713 14.4 13.5241V12M14.4 12C14.4 13.3255 13.3255 14.4 12 14.4C10.6745 14.4 9.6 13.3255 9.6 12C9.6 10.6745 10.6745 9.6 12 9.6C13.3255 9.6 14.4 10.6745 14.4 12Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                        </svg>
-                    </span>
-                    <input type="email" class="form-input ltr:pl-8 rtl:pr-8" placeholder="Email" />
-                </div>
-                <div class="relative">
-                    <span class="absolute ltr:left-2 rtl:right-2 top-2.5 text-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M16.1007 13.359L16.5562 12.9062C17.1858 12.2801 18.1672 12.1515 18.9728 12.5894L20.8833 13.628C22.1102 14.2949 22.3806 15.9295 21.4217 16.883L20.0011 18.2954C19.6399 18.6546 19.1917 18.9171 18.6763 18.9651M4.00289 5.74561C3.96765 5.12559 4.25823 4.56668 4.69185 4.13552L6.26145 2.57483C7.13596 1.70529 8.61028 1.83992 9.37326 2.85908L10.6342 4.54348C11.2507 5.36691 11.1841 6.49484 10.4775 7.19738L10.1907 7.48257"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M18.6763 18.9651C17.0469 19.117 13.0622 18.9492 8.8154 14.7266C4.81076 10.7447 4.09308 7.33182 4.00293 5.74561"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M16.1007 13.3589C16.1007 13.3589 15.0181 14.4353 12.0631 11.4971C9.10807 8.55886 10.1907 7.48242 10.1907 7.48242"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </span>
-                    <input type="text" class="form-input ltr:pl-8 rtl:pr-8" placeholder="Phone" />
-                </div>
-                <div class="relative">
-                    <span class="absolute ltr:left-2 rtl:right-2 top-2.5 text-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                opacity="0.5"
-                                d="M16.6522 3.45508C16.6522 3.45508 16.7333 4.83381 17.9499 6.05034C19.1664 7.26687 20.5451 7.34797 20.5451 7.34797M10.1002 15.5876L8.4126 13.9"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                d="M16.652 3.45506L17.3009 2.80624C18.3759 1.73125 20.1188 1.73125 21.1938 2.80624C22.2687 3.88124 22.2687 5.62415 21.1938 6.69914L20.5449 7.34795L14.5801 13.3128C14.1761 13.7168 13.9741 13.9188 13.7513 14.0926C13.4886 14.2975 13.2043 14.4732 12.9035 14.6166C12.6485 14.7381 12.3775 14.8284 11.8354 15.0091L10.1 15.5876L8.97709 15.9619C8.71035 16.0508 8.41626 15.9814 8.21744 15.7826C8.01862 15.5837 7.9492 15.2897 8.03811 15.0229L8.41242 13.9L8.99089 12.1646C9.17157 11.6225 9.26191 11.3515 9.38344 11.0965C9.52679 10.7957 9.70249 10.5114 9.90743 10.2487C10.0812 10.0259 10.2832 9.82394 10.6872 9.41993L16.652 3.45506Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </span>
-                    <input type="text" class="form-input ltr:pl-8 rtl:pr-8" placeholder="Subject" />
-                </div>
-                <div class="relative">
-                    <span class="absolute ltr:left-2 rtl:right-2 top-2.5 text-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                opacity="0.5"
-                                d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </span>
-                    <textarea rows="4" class="form-textarea ltr:pl-8 rtl:pr-8 resize-none" placeholder="Message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-full">SUBMIT</button>
-            </form>
+    <section id="pesan" style="border-top:1px solid #eee" class="min-h-screen bg-[url('/assets/images/map.svg')] dark:bg-[url('/assets/images/map-dark.svg')] bg-cover bg-center">
+        <div class="flex justify-center items-center my-6">
+            <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black p-6 text-center">Pesan Ambulance</h1>
         </div>
-    </div>
+        <div
+            class="flex justify-center items-center md:flex-row flex-col"
+        >
+        
+            <!-- <div class="panel sm:w-[400px] m-6 max-w-lg w-full">
+                <h2 class="font-bold text-2xl mb-5">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary"
+                    >
+                        <path
+                            opacity="0.5"
+                            d="M5 8.51464C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51464C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C7.23416 16.2499 5 12.0844 5 8.51464Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 19.9853 17.5228 22 12 22C6.47715 22 2 19.9853 2 17.5C2 16.7816 2.37412 16.1025 3.03947 15.5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                    Keterangan
+                </h2>
+                <p class="mb-7">Submit your queries and we will get back to you as soon as possible.</p>
+                <form class="space-y-4" >
+                        <ul class="mb-5">
+                            <textarea :value="getTextAreaValue()" class="form-textarea" rows="10"  placeholder="Tuliskan Keterangan ..."></textarea>
+                            
+                        <li v-if="draft" class="text-gray-500">
+                            {{ draft }}
+                        </li>
+                        </ul>
+                        <div v-if="!listening">
+                        <button
+                            class="
+                            bg-blue-500
+                            hover:bg-blue-700
+                            text-white
+                            font-bold
+                            py-2
+                            px-4
+                            rounded
+                            "
+                            @click="send()"
+                        >
+                            Send message
+                        </button>
+                        
+                        </div>
+                        <div v-else>
+                        Speak your message...
+                        <button
+                            class="
+                            border border-blue-500
+                            hover:bg-blue-700
+                            hover:text-white
+                            py-2
+                            px-4
+                            rounded
+                            "
+                            @click="stop()"
+                        >
+                            Stop listening
+                        </button>
+                        </div>
+                </form>
+            </div> -->
+            <div class="panel sm:w-1/2 m-6 max-w-lg w-full">
+                <h2 class="font-bold text-2xl mb-5">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary"
+                    >
+                        <path
+                            opacity="0.5"
+                            d="M5 8.51464C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51464C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C7.23416 16.2499 5 12.0844 5 8.51464Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 19.9853 17.5228 22 12 22C6.47715 22 2 19.9853 2 17.5C2 16.7816 2.37412 16.1025 3.03947 15.5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                    Keterangan
+                </h2>
+                <p class="mb-7">Rekam suara anda dengan jelas dengan menekan tombol mic dibawah serta lengkapi nomor telepon agar dapat dihubungi oleh petugas.</p>
+                <section id="example-audio">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="mb-5">
+                                <label for="name">Nomor Handphone</label>
+                                <input id="name" type="text" placeholder="Masukkan Nomor Handphone ..." class="form-input" v-model="pemesan.nohp" />
+                            </div>
+                            <div class="record-settings flex">
+                                <vue-record-audio :mode="recordMode.audio" @stream="onStream" @result="onResult" />
+                                <div class="field">
+                                    <label class="label">Mode</label>
+                                    <div class="select">
+                                    <select v-model="recordMode.audio">
+                                        <option value="press">Press</option>
+                                        <option value="hold">Hold</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <audio src="http://localhost:8000/assets/649f54375bf4b.webm" controls />
+                            <div class="recorded-audio" v-if="recordings[0]">
+                                {{ recordings }}
+                            <div v-for="(record, index) in recordings" :key="index" class="recorded-item">
+                                <div class="audio-container"><audio :src="record.src" controls /></div>
+                                <div><button @click="removeRecord(index)" class="btn btn-outline-danger">delete</button></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="panel sm:w-1/2 m-6 max-w-lg w-full">
+                <h2 class="font-bold text-2xl mb-5">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary"
+                    >
+                        <path
+                            opacity="0.5"
+                            d="M5 8.51464C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51464C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C7.23416 16.2499 5 12.0844 5 8.51464Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path
+                            d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 19.9853 17.5228 22 12 22C6.47715 22 2 19.9853 2 17.5C2 16.7816 2.37412 16.1025 3.03947 15.5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                    Lokasi
+                </h2>
+                <p class="mb-7 ">Pastikan lokasi anda sudah sesuai dengan titik yang ada dibawah</p>
+                <div class="rounded bg-blue-100 p-3" v-if="coordinates">
+                    Anda saat ini berada di {{ address }} ( {{ coordinates.lat }} - {{ coordinates.lng }} ).
+                </div>
+                <div class="map mt-3" v-if="coordinates">
+                    
+                    <l-map 
+                        ref="map" 
+                        style="width: 100%; height:200px" 
+                        :zoom="maps.zoom" 
+                        :center="coordinates"
+                        @click="onMapClick"
+                        >
+                        <l-tile-layer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        ></l-tile-layer>
+                        <l-marker
+                            visible
+                            draggable
+                            :icon="icon"
+                            :lat-lng.sync="coordinates"
+                            @dragstart="dragging = true"
+                            @dragend="dragging = false"
+                            >
+                        </l-marker>
+                    </l-map>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center m-6">
+            <button @click.prevent="uploadAudio()" type="button" class="btn btn-primary w-80">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3"><path d="M17.4975 18.4851L20.6281 9.09373C21.8764 5.34874 22.5006 3.47624 21.5122 2.48782C20.5237 1.49939 18.6511 2.12356 14.906 3.37189L5.57477 6.48218C3.49295 7.1761 2.45203 7.52305 2.13608 8.28637C2.06182 8.46577 2.01692 8.65596 2.00311 8.84963C1.94433 9.67365 2.72018 10.4495 4.27188 12.0011L4.55451 12.2837C4.80921 12.5384 4.93655 12.6658 5.03282 12.8075C5.22269 13.0871 5.33046 13.4143 5.34393 13.7519C5.35076 13.9232 5.32403 14.1013 5.27057 14.4574C5.07488 15.7612 4.97703 16.4131 5.0923 16.9147C5.32205 17.9146 6.09599 18.6995 7.09257 18.9433C7.59255 19.0656 8.24576 18.977 9.5522 18.7997L9.62363 18.79C9.99191 18.74 10.1761 18.715 10.3529 18.7257C10.6738 18.745 10.9838 18.8496 11.251 19.0285C11.3981 19.1271 11.5295 19.2585 11.7923 19.5213L12.0436 19.7725C13.5539 21.2828 14.309 22.0379 15.1101 21.9985C15.3309 21.9877 15.5479 21.9365 15.7503 21.8474C16.4844 21.5244 16.8221 20.5113 17.4975 18.4851Z" stroke="currentColor" stroke-width="1.5"></path><path opacity="0.5" d="M6 18L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+                Kirim</button>
+        </div>
+    </section>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
+    import { computed,defineComponent, onUpdated, onMounted, reactive, ref } from 'vue'
+    import { sharedMessages } from '@/doc';
     import { useRouter } from 'vue-router';
     import { useMeta } from '@/composables/use-meta';
-    useMeta({ title: 'Contact Form' });
+    import { lang, langIsSet } from '@/params';
+    import { langs } from '@/langs'
+    import axios from 'axios'
+import Swal from 'sweetalert2';
+    
     const router = useRouter();
+
+    declare var webkitSpeechRecognition: typeof SpeechRecognition;
+
+    export default defineComponent({
+        name: "landing",
+        setup() {
+            useMeta({ title: 'Contact Form' });
+            const name = ref(localStorage.MISHEARD_NAME ?? "");
+            const currentPrompt = ref("");
+            const messages = ref(sharedMessages.toJSON());
+            // const message = ref(sharedMessage.toJSON())
+            const recordings = ref([])
+            const recordMode = ref({
+                audio: 'hold',
+                video: 'press'
+            })
+            const pemesan = ref({
+                id: null,
+                nohp: '',
+            });
+            const theErrors = ref([])
+            const listening = ref(false);
+            const draft = ref("");
+            const coordinates : any = ref(null)
+            const position : any = ref(null)
+            const address : any = ref(null)
+            const audioResult : any = ref(null)
+            const sr = new webkitSpeechRecognition();
+            sr.lang = lang;
+            const sr2 = new webkitSpeechRecognition();
+            sr2.lang = lang;
+            sr2.continuous = true;
+            sr2.interimResults = true;
+            const maps = ref({
+                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                attribution:
+                    '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 15,
+                center: [0.78566373548599999, 122.865568821],
+                markerLatLng: [51.504, -0.159]
+            })
+    
+            let lastMessageCreatedAt: string | undefined;
+            sharedMessages.observe(() => {
+            messages.value = sharedMessages.toJSON();
+
+            const lastMessage = messages.value[messages.value.length - 1];
+            if (lastMessage) {
+                if (lastMessageCreatedAt !== lastMessage.createdAt) {
+                lastMessageCreatedAt = lastMessage.createdAt;
+                (window as any).handleNewMessage?.(lastMessage);
+                }
+            }
+            });
+
+            onMounted(async () => {
+                try {
+                    const result = await getLocation();
+                    coordinates.value = result;
+                    position.value = result
+                    await getAddress()   
+                } catch (error) {
+                    alert(error);
+                }
+            });
+
+            const onMapClick = (response :any) => {
+                // place the marker on the clicked spot
+                coordinates.value = response.latlng;    
+                getAddress()    
+            };      
+
+            const removeRecord = (index :any) => {
+                recordings.value.splice(index, 1)
+            };
+            const onStream = (stream :any) => {
+                console.log('Got a stream object:', stream);
+            };
+            
+            const onResult = (data :any) => {
+                // const reader = new FileReader();
+
+                // // let audioFile = data
+
+                // reader.onload = () => {
+                //     const audioData = reader.result
+                //     const blob = new Blob([data], '.webm')
+                //     recordings.value.push({
+                //         src: window.URL.createObjectURL(data),
+                //         result: blob
+                //     })
+                //     // Kirim objek Blob ke server
+                //     // audioResult.value = blob
+                // }
+
+                // reader.readAsArrayBuffer(data);
+                // audioResult.value = data[0]
+
+                recordings.value.push({
+                    src: window.URL.createObjectURL(data),
+                    result: data
+                })
+                console.log(data);
+                
+            }
+
+            const uploadAudio = () => {
+                const reader = new FileReader();
+
+                reader.onload = () => {
+                    const audioData = reader.result;
+                    const blob = new Blob([audioData], { type: recordings.value[0].result.type });
+
+                    // Kirim objek Blob ke server
+                    sendData(blob);
+                };
+
+                reader.readAsArrayBuffer(recordings.value[0].result);
+            };
+
+            async function getLocation() {
+                try {
+                    const options = {
+                    enableHighAccuracy: true,
+                    timeout: Infinity,
+                    maximumAge: 0
+                    };
+
+                    const position : any = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+                    });
+                    
+                    return {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }
+
+                    
+                } catch (error) {
+                    throw new Error(error);
+                }
+            };
+
+            const getAddress = async () => { 
+                try {
+                    const { lat, lng } = coordinates.value;
+                    const result = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`
+                    );
+                    if (result.status === 200) {
+                    const body = await result.json();
+                    address.value = body.display_name;
+                    }
+                } catch (e) {
+                    console.error("Reverse Geocode Error->", e);
+                }
+                
+            }
+
+            const sendData = async (blob) =>{
+
+                const form = new FormData;
+                form.append('lokasi', address.value)
+                
+                
+                form.append('deskrpsi', blob)
+                console.log(audioResult);
+                
+                // form.append('deskrpsi', new File([new Blob([recordings.value[0].result])], 'audio.mp3'))
+                form.append('lat', coordinates.value.lat)
+                form.append('lng', coordinates.value.lng)
+                form.append('nohp', pemesan.value.nohp)
+                form.append('rumah_sakit_id', 2)
+                console.log(form);
+                axios.post('api/pemesanan', form).then(() => {
+                    showMessage('Data has been saved successfully.');
+                    
+
+                    const toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        showCloseButton: true,
+                        customClass: {
+                            popup: `color-success`
+                        },
+                        target: document.getElementById('success-toast')
+                    });
+                    toast.fire({
+                        title: 'Data berhasil ditambahkan',
+                    });
+                    }).catch((err) =>{
+                        theErrors.value = err.response.data.errors
+                        const toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-start',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            showCloseButton: true,
+                            customClass: {
+                                popup: `color-danger`
+                            },
+                            target: document.getElementById('success-toast')
+                        });
+                        toast.fire({
+                            title: err,
+                        });
+                    })
+            }
+
+            const ask = async (prompt: string): Promise<string> => {
+            try {
+                currentPrompt.value = prompt;
+                return await new Promise((resolve, reject) => {
+                sr.onresult = (event) => {
+                    const text = Array.from(event.results)
+                    .map((alts) => alts[0].transcript)
+                    .join("");
+                    resolve(text);
+                };
+                sr.onerror = (e) => {
+                    reject(new Error("Unable to recognize text: " + e.error));
+                };
+                sr.start();
+                });
+            } finally {
+                currentPrompt.value = "";
+            }
+            };
+            const login = async () => {
+            localStorage.MISHEARD_NAME = name.value = await ask(
+                "Say your name out loud"
+            );
+            };
+            const changeName = async () => {
+            localStorage.MISHEARD_NAME = name.value = "";
+            };
+            const send = async () => {
+            listening.value = true;
+            sr2.onresult = function (event) {
+                var finalTranscript = "";
+                var interimTranscript = "";
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript;
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+                }
+                draft.value = interimTranscript;
+                if (finalTranscript) {
+                sharedMessages.push([
+                    {
+                    text: finalTranscript,
+                    name: name.value,
+                    createdAt: new Date().toJSON(),
+                    },
+                ]);
+                }
+            };
+            sr2.onerror = () => {
+                listening.value = false;
+            };
+            sr2.onend = () => {
+                listening.value = false;
+            };
+            sr2.start();
+            };
+            const stop = () => {
+            sr2.stop();
+            listening.value = false;
+            };
+            // let scrollIsAtBottom = true;
+            // window.onscroll = () => {
+            // scrollIsAtBottom =
+            //     window.scrollY >
+            //     document.documentElement.scrollHeight - window.innerHeight - 16;
+            // };
+            const getTextAreaValue = () => {
+                let message = messages.value.map((item) => {
+                    return item.text
+                })
+                    return message.join(' ');
+            };
+            const updateTextAreaValue = (value) => {
+                messages.value = value.split('\n');
+            };
+            const reset = () => {
+                return messages.value = ''
+            };
+            const showMessage = (msg = '', type = 'success') => {
+                const toast: any = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    customClass: { container: 'toast' },
+                });
+                toast.fire({
+                    icon: type,
+                    title: msg,
+                    padding: '10px 20px',
+                });
+            };
+            // onUpdated(() => {
+            // if (scrollIsAtBottom) {
+            //     window.scrollBy(0, 1000);
+            // }
+            // });
+            const locales = computed(() => {
+            return langs
+                .flatMap(([l, ...lo]) => lo)
+                .sort((a, b) => (a[0] < b[0] ? -1 : 1));
+            });
+            return {
+                name,
+                login,
+                draft,
+                listening,
+                currentPrompt,
+                send,
+                stop,
+                messages,
+                reset,
+                langIsSet,
+                showMessage,
+                langs,
+                locales,
+                getTextAreaValue,
+                updateTextAreaValue,
+                getAddress,
+                getLocation,
+                coordinates,
+                address,
+                position,
+                maps,
+                uploadAudio,
+                onMapClick,
+                onResult,
+                removeRecord,
+                onStream,
+                recordMode,
+                recordings,
+                pemesan,
+                sendData,
+                audioResult
+            };
+        }
+    })
+
+    
+    
 </script>
+<style>
+.vue-audio-recorder, .vue-video-recorder {
+  margin-right: 16px;
+}
+
+.record-settings {
+  margin-top: 16px;
+  margin-bottom:15px;
+  display: flex;
+  justify-content: center;
+}
+
+.recorded-audio {
+  margin: 0 auto;
+  height: 200px;
+  overflow: auto;
+  border: thin solid #eee;
+  background-color: #f7f7f7;
+  padding: 10px 5px;
+}
+
+.recorded-audio .recorded-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.recorded-audio .audio-container {
+  display: flex;
+  height: 54px;
+  margin-right: 16px;
+}
+
+.recorded-video video {
+  width: 100%;
+  max-height: 400px;
+}
+</style>

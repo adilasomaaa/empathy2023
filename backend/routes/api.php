@@ -28,7 +28,9 @@ Route::apiResource('rumah_sakit',RumahSakitController::class);
 Route::apiResource('user',UserController::class);
 // operator
 Route::apiResource('operator',OperatorController::class);
-
+Route::prefix('operator')->group(function(){
+    Route::get('{user}/byUser', [OperatorController::class, 'byUser']);
+});
 // mobil
 Route::apiResource('mobil',MobilController::class);
 Route::prefix('mobil')->group(function(){

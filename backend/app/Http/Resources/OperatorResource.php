@@ -17,12 +17,13 @@ class OperatorResource extends JsonResource
         return [
             'id' => $this->id,
             'nama' => $this->nama,
+            'user' => $this->user,
             'alamat' => $this->alamat,
             'jk' => $this->jk,
             'nohp' => $this->nohp,
             'user_id' => $this->user_id,
-            'rumah_sakit_id' => $this->rumah_sakit_id,
-            'created_at' => $this->created_at,
+            'rumah_sakit_id' => $this->rumah_sakit,
+            'created_at' => $this->created_at->format('d F Y'),
             'updated_at' => $this->updated_at,
         ];
     }

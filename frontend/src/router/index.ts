@@ -49,6 +49,24 @@ const routes: RouteRecordRaw[] = [
                 }
             },
             {
+                path: '/master-pengguna',
+                name: 'master-pengguna',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/user/index.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
+                path: '/master-kenderaan',
+                name: 'master-kenderaan',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/kenderaan/index.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
                 path: '/finance',
                 name: 'finance',
                 component: () => import(/* webpackChunkName: "finance" */ '../views/finance.vue'),

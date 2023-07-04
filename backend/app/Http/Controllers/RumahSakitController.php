@@ -67,9 +67,9 @@ class RumahSakitController extends Controller
         ],200);
     }
 
-    public function delete(Rumah_sakit $rumah_sakit)
+    public function destroy(Rumah_sakit $rumah_sakit)
     {
-        $rumah_sakit->update();
+        $rumah_sakit->delete();
         return response()->json([
             'info' => 'deleted'
         ],200);

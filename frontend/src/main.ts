@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useAuth } from './stores/auth';
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
+import VueRecord from './components/index'
 const app = createApp(App);
 
 axios.defaults.withCredentials = true;
@@ -15,7 +16,7 @@ import { createPinia } from 'pinia';
 const store = createPinia();
 
 app.use(store);
-
+app.use(VueRecord)
 const auth = useAuth()
 
 await auth.getUser();

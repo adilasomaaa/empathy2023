@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PemesananResource;
 use App\Models\Pemesanan;
+use App\Models\Rumah_sakit;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
@@ -17,6 +18,7 @@ class PemesananController extends Controller
         ], 200);
     }
 
+
     public function byRumah_sakit($rumah_sakit_id)
     {
         $data = Pemesanan::where('rumah_sakit_id', $rumah_sakit_id)->get();
@@ -24,6 +26,29 @@ class PemesananController extends Controller
             'info' => 'seccess',
             'data' => PemesananResource::collection($data)
         ], 200);
+    }
+
+    private function getLokasi()
+    {
+        // return 'coba';
+        $lat = 0.5768439; // Latitude titik awal
+        $lng = 123.0597954; // Longitude titik awal
+
+        $nearestLocation = Rumah_sakit::selectRaw("*,
+    (6371 * acos(cos(radians($lat)) * cos(radians(lat)) * cos(radians(lng) - radians($lng)) +
+    sin(radians($lat)) * sin(radians(lat)))) AS distance")
+        ->orderBy('distance')
+        ->first();
+
+        // Mengakses atribut lokasi terdekat
+        $lokasi_id = $nearestLocation->id;
+        $nearestLatitude = $nearestLocation->lat;
+        $nearestLongitude = $nearestLocation->lng;
+        return response()->json([
+            'id' => $lokasi_id,
+            'lat' => $nearestLatitude,
+            'lng' => $nearestLongitude,
+        ],200);
     }
 
     public function show(Pemesanan $pemesanan)
@@ -42,7 +67,7 @@ class PemesananController extends Controller
             'lat' => 'required',
             'lng' => 'required',
             'nohp' => 'required',
-            'rumah_sakit_id' => 'required',
+            // 'rumah_sakit_id' => 'required',
             'foto' => 'required|mimes:jpg,jpeg,png',
         ]);
         if (request()->file('foto')) {

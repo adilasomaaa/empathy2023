@@ -37,6 +37,8 @@ Route::prefix('mobil')->group(function(){
 
 // pemesanan
 Route::apiResource('pemesanan',PemesananController::class);
+
 Route::prefix('pemesanan')->group(function(){
     Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRumah_sakit']);
 });
+Route::get('coba', [PemesananController::class, 'coba']);

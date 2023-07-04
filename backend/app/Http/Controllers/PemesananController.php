@@ -55,26 +55,27 @@ class PemesananController extends Controller
         // }
         // $data['deskripsi'] = $request->deskripsi;
         $blobData = $request->file('deskrpsi');
-        $filename = $blobData->getClientMimeType();
+        // $filename = $blobData->getClientMimeType();
         $storagePath = public_path()."/assets/";
         // $url = $req->audioUrl;
         // $audio= $blobData;
         
         // $data = base64_decode($audio);
-        $file = uniqid() . '.webm';
+        // $file = uniqid() . '.webm';
         // $success = file_put_contents($file, $data);
         
-        // $filename = uniqid() . '.wav';
-        $data['deskrpsi'] = $file;
-        $blobData = mb_convert_encoding($blobData, 'UTF-8', 'auto');
-        $binaryData = file_get_contents($blobData);
+        $filename = uniqid() . '.webm';
+        $data['deskrpsi'] = $filename;
+        // $blobData = mb_convert_encoding($blobData, 'UTF-8', 'auto');
+        // $binaryData = file_get_contents($blobData);
         
-        file_put_contents($storagePath . '/' . $file, $blobData);
+        // file_put_contents($storagePath . '/' . $file, $blobData);
+        $blobData->storeAs('audio',$filename);
 
         Pemesanan::create($data);
         return response()->json([
             'info' => 'created',
-            'data' => $binaryData
+            'data' => $blobData
         ], 200);
     }
 

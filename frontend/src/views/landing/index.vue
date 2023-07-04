@@ -1,7 +1,7 @@
 <template>
     <section id="pesan" style="border-top:1px solid #eee" class="min-h-screen bg-[url('/assets/images/map.svg')] dark:bg-[url('/assets/images/map-dark.svg')] bg-cover bg-center">
         <div class="flex justify-center items-center my-6">
-            <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black p-6 text-center">Pesan Ambulance</h1>
+            <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black p-6 text-center dark:text-white-light">Pesan Ambulance</h1>
         </div>
         <div
             class="flex justify-center items-center md:flex-row flex-col"
@@ -83,32 +83,7 @@
             </div> -->
             <div class="panel sm:w-1/2 m-6 max-w-lg w-full">
                 <h2 class="font-bold text-2xl mb-5">
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary"
-                    >
-                        <path
-                            opacity="0.5"
-                            d="M5 8.51464C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51464C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C7.23416 16.2499 5 12.0844 5 8.51464Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path
-                            d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path
-                            d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 19.9853 17.5228 22 12 22C6.47715 22 2 19.9853 2 17.5C2 16.7816 2.37412 16.1025 3.03947 15.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                        />
-                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-7 h-7 inline-block ltr:mr-1 rtl:ml-1 text-primary" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M16.755 2H7.24502C6.08614 2 5.50671 2 5.03939 2.16261C4.15322 2.47096 3.45748 3.18719 3.15795 4.09946C3 4.58055 3 5.17705 3 6.37006V20.3742C3 21.2324 3.985 21.6878 4.6081 21.1176C4.97417 20.7826 5.52583 20.7826 5.8919 21.1176L6.375 21.5597C7.01659 22.1468 7.98341 22.1468 8.625 21.5597C9.26659 20.9726 10.2334 20.9726 10.875 21.5597C11.5166 22.1468 12.4834 22.1468 13.125 21.5597C13.7666 20.9726 14.7334 20.9726 15.375 21.5597C16.0166 22.1468 16.9834 22.1468 17.625 21.5597L18.1081 21.1176C18.4742 20.7826 19.0258 20.7826 19.3919 21.1176C20.015 21.6878 21 21.2324 21 20.3742V6.37006C21 5.17705 21 4.58055 20.842 4.09946C20.5425 3.18719 19.8468 2.47096 18.9606 2.16261C18.4933 2 17.9139 2 16.755 2Z" stroke="currentColor" stroke-width="1.5"></path><path d="M10.5 11L17 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M7 11H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M7 7.5H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M7 14.5H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M10.5 7.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M10.5 14.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
                     Keterangan
                 </h2>
                 <p class="mb-7">Rekam suara anda dengan jelas dengan menekan tombol mic dibawah serta lengkapi nomor telepon agar dapat dihubungi oleh petugas.</p>
@@ -125,17 +100,15 @@
                                     <label class="label">Mode</label>
                                     <div class="select">
                                     <select v-model="recordMode.audio">
-                                        <option value="press">Press</option>
-                                        <option value="hold">Hold</option>
+                                        <option value="press">Tekan</option>
+                                        <option value="hold">Tahan</option>
                                     </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="column">
-                            <audio src="http://localhost:8000/assets/649f54375bf4b.webm" controls />
                             <div class="recorded-audio" v-if="recordings[0]">
-                                {{ recordings }}
                             <div v-for="(record, index) in recordings" :key="index" class="recorded-item">
                                 <div class="audio-container"><audio :src="record.src" controls /></div>
                                 <div><button @click="removeRecord(index)" class="btn btn-outline-danger">delete</button></div>
@@ -206,6 +179,7 @@
         </div>
         <div class="flex justify-center m-6">
             <button @click.prevent="uploadAudio()" type="button" class="btn btn-primary w-80">
+                <span v-if="loadingData" class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"></span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3"><path d="M17.4975 18.4851L20.6281 9.09373C21.8764 5.34874 22.5006 3.47624 21.5122 2.48782C20.5237 1.49939 18.6511 2.12356 14.906 3.37189L5.57477 6.48218C3.49295 7.1761 2.45203 7.52305 2.13608 8.28637C2.06182 8.46577 2.01692 8.65596 2.00311 8.84963C1.94433 9.67365 2.72018 10.4495 4.27188 12.0011L4.55451 12.2837C4.80921 12.5384 4.93655 12.6658 5.03282 12.8075C5.22269 13.0871 5.33046 13.4143 5.34393 13.7519C5.35076 13.9232 5.32403 14.1013 5.27057 14.4574C5.07488 15.7612 4.97703 16.4131 5.0923 16.9147C5.32205 17.9146 6.09599 18.6995 7.09257 18.9433C7.59255 19.0656 8.24576 18.977 9.5522 18.7997L9.62363 18.79C9.99191 18.74 10.1761 18.715 10.3529 18.7257C10.6738 18.745 10.9838 18.8496 11.251 19.0285C11.3981 19.1271 11.5295 19.2585 11.7923 19.5213L12.0436 19.7725C13.5539 21.2828 14.309 22.0379 15.1101 21.9985C15.3309 21.9877 15.5479 21.9365 15.7503 21.8474C16.4844 21.5244 16.8221 20.5113 17.4975 18.4851Z" stroke="currentColor" stroke-width="1.5"></path><path opacity="0.5" d="M6 18L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
                 Kirim</button>
         </div>
@@ -242,6 +216,7 @@ import Swal from 'sweetalert2';
                 id: null,
                 nohp: '',
             });
+            const loadingData = ref(false)
             const theErrors = ref([])
             const listening = ref(false);
             const draft = ref("");
@@ -329,17 +304,34 @@ import Swal from 'sweetalert2';
             }
 
             const uploadAudio = () => {
-                const reader = new FileReader();
-
-                reader.onload = () => {
-                    const audioData = reader.result;
-                    const blob = new Blob([audioData], { type: recordings.value[0].result.type });
-
-                    // Kirim objek Blob ke server
-                    sendData(blob);
-                };
-
-                reader.readAsArrayBuffer(recordings.value[0].result);
+                if(recordings.value[0]){
+                    const reader = new FileReader();
+    
+                    reader.onload = () => {
+                        const audioData = reader.result;
+                        const blob = new Blob([audioData], { type: recordings.value[0].result.type });
+    
+                        // Kirim objek Blob ke server
+                        sendData(blob);
+                    };
+    
+                    reader.readAsArrayBuffer(recordings.value[0].result);
+                }else {
+                    const toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        showCloseButton: true,
+                        customClass: {
+                            popup: `color-danger`
+                        },
+                        target: document.getElementById('danger-toast')
+                    });
+                    toast.fire({
+                        title: 'Silahkan mengisi keterangan terlebih dahulu',
+                    });
+                }
             };
 
             async function getLocation() {
@@ -382,24 +374,22 @@ import Swal from 'sweetalert2';
             }
 
             const sendData = async (blob) =>{
-
+                loadingData.value = true
                 const form = new FormData;
                 form.append('lokasi', address.value)
                 
                 
                 form.append('deskrpsi', blob)
-                console.log(audioResult);
+                
                 
                 // form.append('deskrpsi', new File([new Blob([recordings.value[0].result])], 'audio.mp3'))
                 form.append('lat', coordinates.value.lat)
                 form.append('lng', coordinates.value.lng)
                 form.append('nohp', pemesan.value.nohp)
                 form.append('rumah_sakit_id', 2)
-                console.log(form);
                 axios.post('api/pemesanan', form).then(() => {
                     showMessage('Data has been saved successfully.');
-                    
-
+                    loadingData.value = false
                     const toast = Swal.mixin({
                         toast: true,
                         position: 'bottom-start',
@@ -416,6 +406,7 @@ import Swal from 'sweetalert2';
                     });
                     }).catch((err) =>{
                         theErrors.value = err.response.data.errors
+                        loadingData.value = true
                         const toast = Swal.mixin({
                             toast: true,
                             position: 'bottom-start',
@@ -568,7 +559,8 @@ import Swal from 'sweetalert2';
                 recordings,
                 pemesan,
                 sendData,
-                audioResult
+                audioResult,
+                loadingData
             };
         }
     })
@@ -590,7 +582,7 @@ import Swal from 'sweetalert2';
 
 .recorded-audio {
   margin: 0 auto;
-  height: 200px;
+  height: 100px;
   overflow: auto;
   border: thin solid #eee;
   background-color: #f7f7f7;

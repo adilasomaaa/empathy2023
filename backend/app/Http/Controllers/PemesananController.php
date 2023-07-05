@@ -135,6 +135,17 @@ class PemesananController extends Controller
         ], 200);
     }
 
+    public function setStatus(Request $request, Pemesanan $pemesanan)
+    {
+        $data = $request->validate([
+            'status' => 'required',
+        ]);
+        $pemesanan->update($data);
+        return response()->json([
+            'info' => 'updated'
+        ], 200);
+    }
+
     public function delete(Pemesanan $pemesanan)
     {
         $pemesanan->update();

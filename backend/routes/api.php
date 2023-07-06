@@ -4,6 +4,7 @@ use App\Http\Controllers\MobilController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RumahSakitController;
+use App\Http\Controllers\SopirController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::get('/permissions', [AuthController::class, 'getAllPermissions']);
 });
 
+Route::get('coba', [PemesananController::class, 'coba']);
 // rumah_sakit
 Route::apiResource('rumah_sakit',RumahSakitController::class);
 
@@ -41,4 +43,11 @@ Route::prefix('mobil')->group(function(){
 Route::apiResource('pemesanan',PemesananController::class);
 Route::prefix('pemesanan')->group(function(){
     Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRumah_sakit']);
+    Route::put('{pemesanan}/setStatus', [PemesananController::class, 'setStatus']);
+});
+
+// sopir
+Route::apiResource('sopir',SopirController::class);
+Route::prefix('sopir')->group(function(){
+    Route::get('{user_id}/byUser', [SopirController::class, 'byUser']);
 });

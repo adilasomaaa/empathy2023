@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PemesananResource;
 use App\Models\Pemesanan;
+use App\Models\Rumah_sakit;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
@@ -17,6 +18,7 @@ class PemesananController extends Controller
         ], 200);
     }
 
+
     public function byRumah_sakit($rumah_sakit_id)
     {
         $data = Pemesanan::where('rumah_sakit_id', $rumah_sakit_id)->get();
@@ -24,6 +26,34 @@ class PemesananController extends Controller
             'info' => 'seccess',
             'data' => PemesananResource::collection($data)
         ], 200);
+    }
+
+    private function getLokasi($lat, $lng)
+    {
+        // return 'coba';
+        // $lat = 0.5768439; // Latitude titik awal
+        // $lng = 123.0597954; // Longitude titik awal
+
+        $nearestLocation = Rumah_sakit::selectRaw("*,
+    (6371 * acos(cos(radians($lat)) * cos(radians(lat)) * cos(radians(lng) - radians($lng)) +
+    sin(radians($lat)) * sin(radians(lat)))) AS distance")
+        ->orderBy('distance')
+        ->first();
+
+        // Mengakses atribut lokasi terdekat
+        $lokasi_id = $nearestLocation->id;
+        $nearestLatitude = $nearestLocation->lat;
+        $nearestLongitude = $nearestLocation->lng;
+        return [
+            'id' => $lokasi_id,
+            'lat' => $nearestLatitude,
+            'lng' => $nearestLongitude,
+        ];
+    }
+
+    public function coba()
+    {
+        return $this->getLokasi(0.5768439, 123.0597954)['id'];
     }
 
     public function show(Pemesanan $pemesanan)
@@ -42,10 +72,12 @@ class PemesananController extends Controller
             'lat' => 'required',
             'lng' => 'required',
             'nohp' => 'required',
-            'rumah_sakit_id' => 'required',
+            // 'rumah_sakit_id' => 'required',
             // 'deskrpsi' => 'required',
             // 'foto' => 'required|mimes:jpg,jpeg,png',
         ]);
+        $data['nama']= mt_rand(100000, 999999);
+        $data['rumah_sakit_id'] = $this->getLokasi($request->lat, $request->lng)['id']; 
         // if (request()->file('foto')) {
         //     $file = request()->file('foto');
         //     $name = $file->store("pemesanan");
@@ -97,6 +129,17 @@ class PemesananController extends Controller
             $data['foto'] = $name;
         }
         $data['deskripsi'] = $request->deskripsi;
+        $pemesanan->update($data);
+        return response()->json([
+            'info' => 'updated'
+        ], 200);
+    }
+
+    public function setStatus(Request $request, Pemesanan $pemesanan)
+    {
+        $data = $request->validate([
+            'status' => 'required',
+        ]);
         $pemesanan->update($data);
         return response()->json([
             'info' => 'updated'

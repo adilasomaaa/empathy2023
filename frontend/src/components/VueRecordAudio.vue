@@ -51,7 +51,7 @@
 <style>
   .vue-audio-recorder {
   position: relative;
-  background-color: #4DB6AC;
+  background-color: #e90228;
   border-radius: 50%;
   width: 64px;
   height: 64px;
@@ -60,10 +60,10 @@
   box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
 }
 .vue-audio-recorder:hover {
-  background-color: #26A69A;
+  background-color: #a50202;
 }
 .vue-audio-recorder.active {
-  background-color: #ef5350;
+  background-color: #d6b80b;
   -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);

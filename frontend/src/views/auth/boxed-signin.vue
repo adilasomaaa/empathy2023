@@ -14,13 +14,13 @@
                     <label for="password">Password</label>
                     <input id="password" type="password" v-model="user.password" class="form-input" placeholder="Enter Password" />
                 </div>
-                <div>
+                <!-- <div>
                     <label class="cursor-pointer">
                         <input type="checkbox" class="form-checkbox" />
                         <span class="text-white-dark">Subscribe to weekly newsletter</span>
                     </label>
-                </div>
-                <button type="submit" @click.prevent="login" class="btn btn-primary w-full">SIGN IN</button>
+                </div> -->
+                <button type="submit" @click.prevent="login" class="btn btn-primary w-full"><span v-if="loadingData" class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"></span>SIGN IN</button>
             </form>
             <!-- <div
                 class="relative my-7 h-5 text-center before:w-full before:h-[1px] before:absolute before:inset-0 before:m-auto before:bg-[#ebedf2] dark:before:bg-[#253b5c]"
@@ -144,11 +144,12 @@ export default {
             store:useAuth(),
             checked: false,
             loading:false,
+            loadingData:false,
         }
     },
     methods:{
         async login() {
-            this.loading = true
+            this.loadingData = true
             let response = await this.store.login(this.user)
             if(response){
                 const toast = Swal.mixin({
@@ -171,7 +172,7 @@ export default {
                         name: 'dashboard'
                     })
                 }, 1000)
-                this.loading = false
+                this.loadingData = false
             }else{
                 this.messages = {
                     show:true,
@@ -190,7 +191,7 @@ export default {
                     title: 'Login Gagal',
                 });
                 // this.$toast.add({severity:'error', summary: 'Login Gagal', detail:'Silahkan periksa kembali email dan password yang anda masukkan.', life: 3000});
-                this.loading = false
+                this.loadingData = false
             }
         }
     }

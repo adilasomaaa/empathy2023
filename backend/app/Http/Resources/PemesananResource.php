@@ -18,13 +18,14 @@ class PemesananResource extends JsonResource
             'id' => $this->id,
             'nama' => $this->nama,
             'lokasi' => $this->lokasi,
-            'lat' => $this->lat,
-            'lng' => $this->lng,
-            'deskripsi' => $this->deskripsi,
+            'lat' => (float)$this->lat,
+            'lng' => (float)$this->lng,
+            'deskripsi' => $this->deskrpsi,
             'nohp' => $this->nohp,
             'foto' => '/pemesanan/' . $this->foto,
+            'status' => $this->status,
             'rumah_sakit_id' => $this->rumah_sakit_id,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->format('h:i:s, d F Y'),
             'updated_at' => $this->updated_at,
         ];
     }

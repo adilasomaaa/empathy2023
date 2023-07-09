@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PemesananResource;
 use App\Models\Pemesanan;
+use App\Models\VerifikasiPemesanan;
 use App\Models\Rumah_sakit;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,19 @@ class PemesananController extends Controller
     public function coba()
     {
         return $this->getLokasi(0.5768439, 123.0597954)['id'];
+    }
+
+    public function bySopir($sopir_id)
+    {
+        $data = Pemesanan::join('verifikasi_pemesanans','verifikasi_pemesanans.pemesanan_id','=','pemesanan.id')
+            ->join('sopir','sopir.id','=','verifikasi_pemesanans.sopir_id')
+            ->select('pemesanan.*','verifikasi_pemesanans.sopir_id')
+            ->where('verifikasi_pemesanans.sopir_id',$sopir_id)
+            ->get();
+        return response()->json([
+            'info' => 'seccess',
+            'data' => PemesananResource::collection($data)
+        ], 200);
     }
 
     public function show(Pemesanan $pemesanan)
@@ -107,28 +121,43 @@ class PemesananController extends Controller
         Pemesanan::create($data);
         return response()->json([
             'info' => 'created',
-            'data' => $blobData
+            'data' => $data['nama']
         ], 200);
     }
 
     public function update(Request $request, Pemesanan $pemesanan)
     {
-        $data = $request->validate([
-            'nama' => 'required',
-            'lokasi' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
-            'nohp' => 'required',
-            'rumah_sakit_id' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg,png',
-            // 'foto' => 'required|mimes:jpg,jpeg,png',
+        // $data = $request->validate([
+        //     'nama' => 'required',
+        //     'lokasi' => 'required',
+        //     'lat' => 'required',
+        //     'lng' => 'required',
+        //     'nohp' => 'required',
+        //     'rumah_sakit_id' => 'required',
+        //     'foto' => 'required|mimes:jpg,jpeg,png',
+        //     // 'foto' => 'required|mimes:jpg,jpeg,png',
+        // ]);
+        // if (request()->file('foto')) {
+        //     $file = request()->file('foto');
+        //     $name = $file->store("pemesanan");
+        //     $data['foto'] = $name;
+        // }
+        // $data['deskripsi'] = $request->deskripsi;
+        $data['status'] = 'dikonfirmasi_rs';
+        VerifikasiPemesanan::create([
+            'pemesanan_id' => $pemesanan->id,
+            'mobil_id' => $request->mobil,
+            'sopir_id' => $request->sopir,           
         ]);
-        if (request()->file('foto')) {
-            $file = request()->file('foto');
-            $name = $file->store("pemesanan");
-            $data['foto'] = $name;
-        }
-        $data['deskripsi'] = $request->deskripsi;
+        $pemesanan->update($data);
+        return response()->json([
+            'info' => 'updated'
+        ], 200);
+    }
+
+    public function konfirmasi(Request $request, Pemesanan $pemesanan)
+    {
+        $data['status'] = 'dikonfirmasi_sopir';
         $pemesanan->update($data);
         return response()->json([
             'info' => 'updated'

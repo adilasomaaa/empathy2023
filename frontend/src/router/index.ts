@@ -49,6 +49,42 @@ const routes: RouteRecordRaw[] = [
                 }
             },
             {
+                path: '/manajemen-pemesanan',
+                name: 'manajemen-pemesanan',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/pemesanan/index.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
+                path: '/konfirmasi-pemesanan',
+                name: 'konfirmasi-pemesanan',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/pemesanan/konfirmasi.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
+                path: '/verifikasi-pemesanan/:idPemesanan',
+                name: 'verifikasi-pemesanan',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/pemesanan/verifikasi.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
+                path: '/master-pengemudi',
+                name: 'master-pengemudi',
+                component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/sopir/index.vue'),
+                meta: {
+                    role: 'all',
+                    ability: null
+                }
+            },
+            {
                 path: '/master-pengguna',
                 name: 'master-pengguna',
                 component: () => import(/* webpackChunkName: "analytics" */ '../views/pages/user/index.vue'),

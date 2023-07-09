@@ -453,30 +453,34 @@
                     <div class="dropdown shrink-0">
                         <Popper :placement="store.rtlClass === 'rtl' ? 'bottom-end' : 'bottom-start'" offsetDistance="8" class="!block">
                             <button type="button" class="relative group block">
-                                <img
-                                    class="w-9 h-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                    src="/assets/images/user-profile.jpeg"
-                                    alt=""
-                                />
+                                <div
+                                    class="grid place-content-center h-8 w-8 ltr:mr-2 rtl:ml-2 rounded-full bg-primary text-white text-sm font-semibold"
+                                >
+                                    {{ user.username.charAt(0) + '' + user.username.charAt(user.username.indexOf(' ') + 1) }}
+                                </div>
                             </button>
                             <template #content="{ close }">
                                 <ul class="text-dark dark:text-white-dark !py-0 w-[230px] font-semibold dark:text-white-light/90">
                                     <li>
                                         <div class="flex items-center px-4 py-4">
                                             <div class="flex-none">
-                                                <img class="rounded-md w-10 h-10 object-cover" src="/assets/images/user-profile.jpeg" alt="" />
+                                                <div
+                                                    class="grid place-content-center h-8 w-8 ltr:mr-2 rtl:ml-2 rounded-full bg-primary text-white text-sm font-semibold"
+                                                >
+                                                    {{ user.username.charAt(0) + '' + user.username.charAt(user.username.indexOf(' ') + 1) }}
+                                                </div>
                                             </div>
                                             <div class="ltr:pl-4 rtl:pr-4">
                                                 <h4 class="text-base">
-                                                    John Doe<span class="text-xs bg-success-light rounded text-success px-1 ltr:ml-2 rtl:ml-2">Pro</span>
+                                                    {{user.username}}<span class="text-xs bg-success-light rounded text-success px-1 ltr:ml-2 rtl:ml-2">{{role[0]}}</span>
                                                 </h4>
                                                 <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white" href="javascript:;"
-                                                    >johndoe@gmail.com</a
+                                                    >{{user.email}}</a
                                                 >
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <router-link to="/users/profile" class="dark:hover:text-white" @click="close()">
                                             <svg
                                                 class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2"
@@ -565,7 +569,7 @@
 
                                             Lock Screen
                                         </router-link>
-                                    </li>
+                                    </li> -->
                                     <li class="border-t border-white-light dark:border-white-light/10">
                                         <router-link to="/auth/boxed-signin" class="text-danger !py-3" @click="logoutAction()">
                                             <svg
@@ -1304,6 +1308,8 @@
     const router = useRouter();
     const search = ref(false);
     const auth = useAuth()
+    const role:any = computed(() => auth.$state.role)
+    const user:any = computed(() => auth.$state.user)
 
     const myAction = () => auth.logout()
     // multi language

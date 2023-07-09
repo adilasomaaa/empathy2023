@@ -9,7 +9,7 @@ class Sopir extends Model
 {
     use HasFactory;
     protected $table = 'sopir';
-    protected $guardrd = ['id'];
+    protected $guarded = ['id'];
 
     public function user()
     {

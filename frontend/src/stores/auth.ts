@@ -25,9 +25,9 @@ export const useAuth = defineStore({
                 if(getRole.data == 'operator'){
                     const getDetail = await axios.get(`api/operator/${response.data.id}/byUser`);
                     this.detail_user = getDetail.data.data
-                // }else if(getRole.data == 'student') {
-                //     const getDetail = await axios.get(`api/student/get-user/${response.data.id}`);
-                //     this.detail_user = getDetail.data.data
+                }else if(getRole.data == 'pengemudi') {
+                    const getDetail = await axios.get(`api/sopir/${response.data.id}/byUser`);
+                    this.detail_user = getDetail.data.data
                 }
                 this.user = response.data;
                 this.authenticated = true;

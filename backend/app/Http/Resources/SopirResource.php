@@ -16,6 +16,9 @@ class SopirResource extends JsonResource
     {
         return [
             'id'=> $this->id,
+            'username'=> $this->user->username,
+            'email'=> $this->user->email,
+            'password'=> $this->user->password,
             'nama'=> $this->nama,
             'alamat'=> $this->alamat,
             'nohp'=> $this->nohp,

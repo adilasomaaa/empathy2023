@@ -28,6 +28,17 @@ class SopirController extends Controller
         ], 200);
     }
 
+   
+
+    public function byRumah_sakit($rumah_sakit_id)
+    {
+        $data = Sopir::where('rumah_sakit_id', $rumah_sakit_id)->get();
+        return response()->json([
+            'info' => 'seccess',
+            'data' => SopirResource::collection($data)
+        ], 200);
+    }
+
     public function show(Sopir $sopir)
     {
         return response()->json([

@@ -10,4 +10,9 @@ class Pemesanan extends Model
     use HasFactory;
     protected $table = 'pemesanan';
     protected $guarded = ['id'];
+
+    public function verifikasi_pemesanan()
+    {
+        return $this->hasMany(VerifikasiPemesanan::class,'verifikasi_pemesanan_id');
+    }
 }

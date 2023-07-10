@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VerifikasiPemesanan extends Model
 {
     use HasFactory;
-    protected $table = 'verifikasi_pemesanans';
+    protected $table = 'verifikasi_pemesanan';
     protected $guarded = ['id'];
 
     public function mobil()

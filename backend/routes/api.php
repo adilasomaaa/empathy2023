@@ -45,8 +45,9 @@ Route::apiResource('pemesanan',PemesananController::class);
 Route::prefix('pemesanan')->group(function(){
     Route::put('{pemesanan}/konfirmasi', [PemesananController::class, 'konfirmasi']);
     Route::get('{sopir_id}/bySopir', [PemesananController::class, 'bySopir']);
-    Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRumah_sakit']);
+    Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRummah_sakit']);
     Route::put('{pemesanan}/setStatus', [PemesananController::class, 'setStatus']);
+    Route::put('{status}/byStatus', [PemesananController::class, 'byStatus']);
 });
 
 Route::get('verifikasi/{pemesanan_id}/byPemesanan', [VerifikasiPemesananController::class ,'byPemesanan']);

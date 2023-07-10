@@ -19,6 +19,14 @@ class PemesananController extends Controller
         ], 200);
     }
 
+    public function byStatus($status)
+    {
+        $data = Pemesanan::where('status', $status)->limit(10);
+        return response()->json([
+            'info' => 'seccess',
+            'data' => PemesananResource::collection($data)
+        ], 200);
+    }
 
     public function byRumah_sakit($rumah_sakit_id)
     {

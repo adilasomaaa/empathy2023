@@ -31,9 +31,142 @@
 
                 <div class="mt-6 flex items-center justify-center gap-4">
                 <a href="#pesan" class="transform rounded-md bg-primary px-5 py-3 font-medium text-white transition-colors hover:bg-red-700">Pesan Ambulance</a>
-                <a href="#" class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50"> Lacak Ambulance </a>
+                <a href="#lacak" class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50"> Lacak Ambulance </a>
+                </div>
+                <div class="flex gap-6 justify-center">
+                    <div class="panel h-full p-0">
+                        <div class="flex p-5">
+                            <div class="bg-primary/10 text-primary rounded-xl w-11 h-11 flex justify-center items-center dark:bg-primary dark:text-white-light">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                                    <circle cx="12" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
+                                    <path
+                                        opacity="0.5"
+                                        d="M18 9C19.6569 9 21 7.88071 21 6.5C21 5.11929 19.6569 4 18 4"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        opacity="0.5"
+                                        d="M6 9C4.34315 9 3 7.88071 3 6.5C3 5.11929 4.34315 4 6 4"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                    <ellipse cx="12" cy="17" rx="6" ry="4" stroke="currentColor" stroke-width="1.5" />
+                                    <path
+                                        opacity="0.5"
+                                        d="M20 19C21.7542 18.6153 23 17.6411 23 16.5C23 15.3589 21.7542 14.3847 20 14"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        opacity="0.5"
+                                        d="M4 19C2.24575 18.6153 1 17.6411 1 16.5C1 15.3589 2.24575 14.3847 4 14"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="ltr:ml-3 rtl:mr-3 font-semibold">
+                                <p class="text-xl dark:text-white-light">15</p>
+                                <h5 class="text-[#506690] text-xs">Rumah Sakit</h5>
+                            </div>
+                        </div>
+                        <!-- <div class="h-60">
+                            <apexchart height="auto" :options="followers" :series="followersSeries" class="absolute bottom-0">
+                                
+                                <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                                    <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
+                                </div>
+                            </apexchart>
+                        </div> -->
+                    </div>
+
+                    <div class="panel h-full p-0">
+                        <div class="flex p-5">
+                            <div class="bg-danger/10 text-danger rounded-xl w-11 h-11 flex justify-center items-center dark:bg-danger dark:text-white-light">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                                    <path
+                                        d="M10.0464 14C8.54044 12.4882 8.67609 9.90087 10.3494 8.22108L15.197 3.35462C16.8703 1.67483 19.4476 1.53865 20.9536 3.05046C22.4596 4.56228 22.3239 7.14956 20.6506 8.82935L18.2268 11.2626"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        opacity="0.5"
+                                        d="M13.9536 10C15.4596 11.5118 15.3239 14.0991 13.6506 15.7789L11.2268 18.2121L8.80299 20.6454C7.12969 22.3252 4.55237 22.4613 3.0464 20.9495C1.54043 19.4377 1.67609 16.8504 3.34939 15.1706L5.77323 12.7373"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="ltr:ml-3 rtl:mr-3 font-semibold">
+                                <p class="text-xl dark:text-white-light">25</p>
+                                <h5 class="text-[#506690] text-xs">Pengemudi</h5>
+                            </div>
+                        </div>
+                        <!-- <div class="h-60">
+                            <apexchart height="160" :options="referral" :series="referralSeries" class="w-full absolute bottom-0">
+                                
+                                <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                                    <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
+                                </div>
+                            </apexchart>
+                        </div> -->
+                    </div>
+
+                    <div class="panel h-full p-0">
+                        <div class="flex p-5">
+                            <div class="bg-success/10 text-success rounded-xl w-11 h-11 flex justify-center items-center dark:bg-success dark:text-white-light">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                                    <path
+                                        d="M10 22C14.4183 22 18 18.4183 18 14C18 9.58172 14.4183 6 10 6C5.58172 6 2 9.58172 2 14C2 15.2355 2.28008 16.4056 2.7802 17.4502C2.95209 17.8093 3.01245 18.2161 2.90955 18.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L5.39939 21.0904C5.78393 20.9876 6.19071 21.0479 6.54976 21.2198C7.5944 21.7199 8.76449 22 10 22Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                    />
+                                    <path
+                                        opacity="0.5"
+                                        d="M18 14.5018C18.0665 14.4741 18.1324 14.4453 18.1977 14.4155C18.5598 14.2501 18.9661 14.1882 19.3506 14.2911L19.8267 14.4185C20.793 14.677 21.677 13.793 21.4185 12.8267L21.2911 12.3506C21.1882 11.9661 21.2501 11.5598 21.4155 11.1977C21.7908 10.376 22 9.46242 22 8.5C22 4.91015 19.0899 2 15.5 2C12.7977 2 10.4806 3.64899 9.5 5.9956"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                    />
+                                    <g opacity="0.5">
+                                        <path
+                                            d="M7.5 14C7.5 14.5523 7.05228 15 6.5 15C5.94772 15 5.5 14.5523 5.5 14C5.5 13.4477 5.94772 13 6.5 13C7.05228 13 7.5 13.4477 7.5 14Z"
+                                            fill="currentColor"
+                                        />
+                                        <path
+                                            d="M11 14C11 14.5523 10.5523 15 10 15C9.44772 15 9 14.5523 9 14C9 13.4477 9.44772 13 10 13C10.5523 13 11 13.4477 11 14Z"
+                                            fill="currentColor"
+                                        />
+                                        <path
+                                            d="M14.5 14C14.5 14.5523 14.0523 15 13.5 15C12.9477 15 12.5 14.5523 12.5 14C12.5 13.4477 12.9477 13 13.5 13C14.0523 13 14.5 13.4477 14.5 14Z"
+                                            fill="currentColor"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="ltr:ml-3 rtl:mr-3 font-semibold">
+                                <p class="text-xl dark:text-white-light">87</p>
+                                <h5 class="text-[#506690] text-xs">Pemesanan</h5>
+                            </div>
+                        </div>
+                        <!-- <div class="h-60">
+                            <apexchart height="160" :options="engagement" :series="engagementSeries" class="w-full absolute bottom-0">
+                                
+                                <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                                    <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
+                                </div>
+                            </apexchart>
+                        </div> -->
+                    </div>
                 </div>
             </div>
+            
         </section>
         <div class="fixed bottom-6 ltr:right-6 rtl:left-6 z-50">
             <template v-if="showTopButton">

@@ -1,526 +1,431 @@
 <template>
-  <section id="pesan" style="border-top:1px solid #eee" class="min-h-screen bg-white dark:bg-[#0e1726] bg-cover bg-center">
+  <section id="lacak" style="border-top:1px solid #eee" class="min-h-screen bg-white dark:bg-[#0e1726] bg-cover bg-center">
         <div class="flex justify-center items-center my-6">
             <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black p-6 text-center dark:text-white-light">Lacak Ambulance</h1>
         </div>
-        <div class="flex gap-6 justify-center items-center md:flex-row flex-col">
-            <div class="panel h-full sm:w-1/2 m-6 max-w-lg w-full">
-                <div class="flex items-start justify-between mb-5">
-                    <h5 class="font-semibold text-lg dark:text-white-light">Statistik Pemesanan</h5>
+        <div class="flex gap-6 mb-6 justify-center items-center md:flex-row flex-col"> 
+            <div>
+                <div
+                class="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] shadow-[1px_2px_12px_0_rgba(31,45,61,0.10)] rounded-full border border-[#e0e6ed] dark:border-[#1b2e4b] flex justify-center flex-col"
+                >
+                <count-up class="text-primary text-xl sm:text-3xl text-center" :startVal="0" :end-val="105" :duration="7"></count-up>
                 </div>
-                <div class="flex flex-col space-y-5">
-                    <div class="flex items-center">
-                        <div class="w-9 h-9">
-                            <div class="bg-primary/10 text-primary rounded-xl w-9 h-9 flex justify-center items-center dark:bg-primary dark:text-white-light">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24px"
-                                    height="24px"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="w-5 h-5"
-                                >
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <circle opacity="0.5" cx="12" cy="12" r="4"></circle>
-                                    <line opacity="0.5" x1="21.17" y1="8" x2="12" y2="8"></line>
-                                    <line opacity="0.5" x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
-                                    <line opacity="0.5" x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="px-3 flex-initial w-full">
-                            <div class="w-summary-info flex justify-between font-semibold text-white-dark mb-1">
-                                <h6>Selesai</h6>
-                                <p class="ltr:ml-auto rtl:mr-auto text-xs">65%</p>
-                            </div>
-                            <div>
-                                <div class="w-full rounded-full h-5 p-1 bg-dark-light overflow-hidden shadow-3xl dark:bg-dark-light/10 dark:shadow-none">
-                                    <div
-                                        class="bg-gradient-to-r from-[#009ffd] to-[#2a2a72] w-full h-full rounded-full relative before:absolute before:inset-y-0 ltr:before:right-0.5 rtl:before:left-0.5 before:bg-white before:w-2 before:h-2 before:rounded-full before:m-auto"
-                                        style="width: 65%"
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-9 h-9">
-                            <div class="bg-danger/10 text-danger rounded-xl w-9 h-9 flex justify-center items-center dark:bg-danger dark:text-white-light">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                    <circle opacity="0.5" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
-                                    <path
-                                        d="M13.024 14.5601C10.7142 15.484 9.5593 15.946 8.89964 15.4977C8.74324 15.3914 8.60834 15.2565 8.50206 15.1001C8.0538 14.4405 8.51575 13.2856 9.43967 10.9758C9.63673 10.4831 9.73527 10.2368 9.90474 10.0435C9.94792 9.99429 9.99429 9.94792 10.0435 9.90474C10.2368 9.73527 10.4831 9.63673 10.9758 9.43966C13.2856 8.51575 14.4405 8.0538 15.1001 8.50206C15.2565 8.60834 15.3914 8.74324 15.4977 8.89964C15.946 9.5593 15.484 10.7142 14.5601 13.024C14.363 13.5166 14.2645 13.763 14.095 13.9562C14.0518 14.0055 14.0055 14.0518 13.9562 14.095C13.763 14.2645 13.5166 14.363 13.024 14.5601Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="px-3 flex-initial w-full">
-                            <div class="w-summary-info flex justify-between font-semibold text-white-dark mb-1">
-                                <h6>Ditolak</h6>
-                                <p class="ltr:ml-auto rtl:mr-auto text-xs">40%</p>
-                            </div>
-                            <div>
-                                <div class="w-full rounded-full h-5 p-1 bg-dark-light overflow-hidden shadow-3xl dark:bg-dark-light/10 dark:shadow-none">
-                                    <div
-                                        class="bg-gradient-to-r from-[#a71d31] to-[#3f0d12] w-full h-full rounded-full relative before:absolute before:inset-y-0 ltr:before:right-0.5 rtl:before:left-0.5 before:bg-white before:w-2 before:h-2 before:rounded-full before:m-auto"
-                                        style="width: 40%"
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-9 h-9">
-                            <div class="bg-warning/10 text-warning rounded-xl w-9 h-9 flex justify-center items-center dark:bg-warning dark:text-white-light">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                    <path
-                                        opacity="0.5"
-                                        d="M2 12H22M16 12C16 13.3132 15.8965 14.6136 15.6955 15.8268C15.4945 17.0401 15.1999 18.1425 14.8284 19.0711C14.457 19.9997 14.016 20.7362 13.5307 21.2388C13.0454 21.7413 12.5253 22 12 22C11.4747 22 10.9546 21.7413 10.4693 21.2388C9.98396 20.7362 9.54301 19.9997 9.17157 19.0711C8.80014 18.1425 8.5055 17.0401 8.30448 15.8268C8.10346 14.6136 8 13.3132 8 12C8 10.6868 8.10346 9.38642 8.30448 8.17316C8.5055 6.95991 8.80014 5.85752 9.17157 4.92893C9.54301 4.00035 9.98396 3.26375 10.4693 2.7612C10.9546 2.25866 11.4747 2 12 2C12.5253 2 13.0454 2.25866 13.5307 2.76121C14.016 3.26375 14.457 4.00035 14.8284 4.92893C15.1999 5.85752 15.4945 6.95991 15.6955 8.17317C15.8965 9.38642 16 10.6868 16 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                    />
-                                    <path
-                                        d="M22 12C22 13.3132 21.7413 14.6136 21.2388 15.8268C20.7362 17.0401 19.9997 18.1425 19.0711 19.0711C18.1425 19.9997 17.0401 20.7362 15.8268 21.2388C14.6136 21.7413 13.3132 22 12 22C10.6868 22 9.38642 21.7413 8.17317 21.2388C6.95991 20.7362 5.85752 19.9997 4.92893 19.0711C4.00035 18.1425 3.26375 17.0401 2.7612 15.8268C2.25866 14.6136 2 13.3132 2 12C2 10.6868 2.25866 9.38642 2.76121 8.17316C3.26375 6.95991 4.00035 5.85752 4.92893 4.92893C5.85752 4.00035 6.95991 3.26375 8.17317 2.7612C9.38642 2.25866 10.6868 2 12 2C13.3132 2 14.6136 2.25866 15.8268 2.76121C17.0401 3.26375 18.1425 4.00035 19.0711 4.92893C19.9997 5.85752 20.7362 6.95991 21.2388 8.17317C21.7413 9.38642 22 10.6868 22 12L22 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="px-3 flex-initial w-full">
-                            <div class="w-summary-info flex justify-between font-semibold text-white-dark mb-1">
-                                <h6>Sementara Bertugas</h6>
-                                <p class="ltr:ml-auto rtl:mr-auto text-xs">25%</p>
-                            </div>
-                            <div>
-                                <div class="w-full rounded-full h-5 p-1 bg-dark-light overflow-hidden shadow-3xl dark:bg-dark-light/10 dark:shadow-none">
-                                    <div
-                                        class="bg-gradient-to-r from-[#fe5f75] to-[#fc9842] w-full h-full rounded-full relative before:absolute before:inset-y-0 ltr:before:right-0.5 rtl:before:left-0.5 before:bg-white before:w-2 before:h-2 before:rounded-full before:m-auto"
-                                        style="width: 25%"
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-9 h-9">
-                            <div class="bg-warning/10 text-warning rounded-xl w-9 h-9 flex justify-center items-center dark:bg-warning dark:text-white-light">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                    <path
-                                        opacity="0.5"
-                                        d="M2 12H22M16 12C16 13.3132 15.8965 14.6136 15.6955 15.8268C15.4945 17.0401 15.1999 18.1425 14.8284 19.0711C14.457 19.9997 14.016 20.7362 13.5307 21.2388C13.0454 21.7413 12.5253 22 12 22C11.4747 22 10.9546 21.7413 10.4693 21.2388C9.98396 20.7362 9.54301 19.9997 9.17157 19.0711C8.80014 18.1425 8.5055 17.0401 8.30448 15.8268C8.10346 14.6136 8 13.3132 8 12C8 10.6868 8.10346 9.38642 8.30448 8.17316C8.5055 6.95991 8.80014 5.85752 9.17157 4.92893C9.54301 4.00035 9.98396 3.26375 10.4693 2.7612C10.9546 2.25866 11.4747 2 12 2C12.5253 2 13.0454 2.25866 13.5307 2.76121C14.016 3.26375 14.457 4.00035 14.8284 4.92893C15.1999 5.85752 15.4945 6.95991 15.6955 8.17317C15.8965 9.38642 16 10.6868 16 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                    />
-                                    <path
-                                        d="M22 12C22 13.3132 21.7413 14.6136 21.2388 15.8268C20.7362 17.0401 19.9997 18.1425 19.0711 19.0711C18.1425 19.9997 17.0401 20.7362 15.8268 21.2388C14.6136 21.7413 13.3132 22 12 22C10.6868 22 9.38642 21.7413 8.17317 21.2388C6.95991 20.7362 5.85752 19.9997 4.92893 19.0711C4.00035 18.1425 3.26375 17.0401 2.7612 15.8268C2.25866 14.6136 2 13.3132 2 12C2 10.6868 2.25866 9.38642 2.76121 8.17316C3.26375 6.95991 4.00035 5.85752 4.92893 4.92893C5.85752 4.00035 6.95991 3.26375 8.17317 2.7612C9.38642 2.25866 10.6868 2 12 2C13.3132 2 14.6136 2.25866 15.8268 2.76121C17.0401 3.26375 18.1425 4.00035 19.0711 4.92893C19.9997 5.85752 20.7362 6.95991 21.2388 8.17317C21.7413 9.38642 22 10.6868 22 12L22 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="px-3 flex-initial w-full">
-                            <div class="w-summary-info flex justify-between font-semibold text-white-dark mb-1">
-                                <h6>Dikonfirmasi Rumah Sakit / Organisasi Relawan</h6>
-                                <p class="ltr:ml-auto rtl:mr-auto text-xs">25%</p>
-                            </div>
-                            <div>
-                                <div class="w-full rounded-full h-5 p-1 bg-dark-light overflow-hidden shadow-3xl dark:bg-dark-light/10 dark:shadow-none">
-                                    <div
-                                        class="bg-gradient-to-r from-[#fe5f75] to-[#fc9842] w-full h-full rounded-full relative before:absolute before:inset-y-0 ltr:before:right-0.5 rtl:before:left-0.5 before:bg-white before:w-2 before:h-2 before:rounded-full before:m-auto"
-                                        style="width: 25%"
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-9 h-9">
-                            <div class="bg-warning/10 text-warning rounded-xl w-9 h-9 flex justify-center items-center dark:bg-warning dark:text-white-light">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                    <path
-                                        opacity="0.5"
-                                        d="M2 12H22M16 12C16 13.3132 15.8965 14.6136 15.6955 15.8268C15.4945 17.0401 15.1999 18.1425 14.8284 19.0711C14.457 19.9997 14.016 20.7362 13.5307 21.2388C13.0454 21.7413 12.5253 22 12 22C11.4747 22 10.9546 21.7413 10.4693 21.2388C9.98396 20.7362 9.54301 19.9997 9.17157 19.0711C8.80014 18.1425 8.5055 17.0401 8.30448 15.8268C8.10346 14.6136 8 13.3132 8 12C8 10.6868 8.10346 9.38642 8.30448 8.17316C8.5055 6.95991 8.80014 5.85752 9.17157 4.92893C9.54301 4.00035 9.98396 3.26375 10.4693 2.7612C10.9546 2.25866 11.4747 2 12 2C12.5253 2 13.0454 2.25866 13.5307 2.76121C14.016 3.26375 14.457 4.00035 14.8284 4.92893C15.1999 5.85752 15.4945 6.95991 15.6955 8.17317C15.8965 9.38642 16 10.6868 16 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                    />
-                                    <path
-                                        d="M22 12C22 13.3132 21.7413 14.6136 21.2388 15.8268C20.7362 17.0401 19.9997 18.1425 19.0711 19.0711C18.1425 19.9997 17.0401 20.7362 15.8268 21.2388C14.6136 21.7413 13.3132 22 12 22C10.6868 22 9.38642 21.7413 8.17317 21.2388C6.95991 20.7362 5.85752 19.9997 4.92893 19.0711C4.00035 18.1425 3.26375 17.0401 2.7612 15.8268C2.25866 14.6136 2 13.3132 2 12C2 10.6868 2.25866 9.38642 2.76121 8.17316C3.26375 6.95991 4.00035 5.85752 4.92893 4.92893C5.85752 4.00035 6.95991 3.26375 8.17317 2.7612C9.38642 2.25866 10.6868 2 12 2C13.3132 2 14.6136 2.25866 15.8268 2.76121C17.0401 3.26375 18.1425 4.00035 19.0711 4.92893C19.9997 5.85752 20.7362 6.95991 21.2388 8.17317C21.7413 9.38642 22 10.6868 22 12L22 12Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="px-3 flex-initial w-full">
-                            <div class="w-summary-info flex justify-between font-semibold text-white-dark mb-1">
-                                <h6>Dipesan</h6>
-                                <p class="ltr:ml-auto rtl:mr-auto text-xs">25%</p>
-                            </div>
-                            <div>
-                                <div class="w-full rounded-full h-5 p-1 bg-dark-light overflow-hidden shadow-3xl dark:bg-dark-light/10 dark:shadow-none">
-                                    <div
-                                        class="bg-gradient-to-r from-[#fe5f75] to-[#fc9842] w-full h-full rounded-full relative before:absolute before:inset-y-0 ltr:before:right-0.5 rtl:before:left-0.5 before:bg-white before:w-2 before:h-2 before:rounded-full before:m-auto"
-                                        style="width: 25%"
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+                <h4 class="text-[#3b3f5c] text-xs sm:text-[15px] mt-4 flex flex-col justify-center text-center dark:text-white-dark font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 flex mr-auto ml-auto" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                Selesai
+                </h4>
             </div>
+            <div>
+                <div
+                class="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] shadow-[1px_2px_12px_0_rgba(31,45,61,0.10)] rounded-full border border-[#e0e6ed] dark:border-[#1b2e4b] flex justify-center flex-col"
+                >
+                <count-up class="text-primary text-xl sm:text-3xl text-center" :startVal="0" :end-val="105" :duration="7"></count-up>
+                </div>
+                <h4 class="text-[#3b3f5c] text-xs sm:text-[15px] mt-4 flex flex-col justify-center text-center dark:text-white-dark font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-8 flex mr-auto ml-auto" stroke="currentColor" stroke-width="2">
+  <path d="M20 6.92V5c0-1.1-.9-2-2-2h-6.37a2 2 0 0 0-1.64.85l-1.74 2.61-3.26-.81a2 2 0 0 0-2.28 1.55l-1.4 6.61a2 2 0 0 0 .49 1.89l2.8 2.8M12 12l9 2-9 2-9-2 9-2zm-7 7l4 4 4-4M6 2v2"></path>
+</svg>
 
-            <div class="panel h-full p-0">
-                <div class="flex p-5">
-                    <div class="bg-primary/10 text-primary rounded-xl w-11 h-11 flex justify-center items-center dark:bg-primary dark:text-white-light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <circle cx="12" cy="6" r="4" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                opacity="0.5"
-                                d="M18 9C19.6569 9 21 7.88071 21 6.5C21 5.11929 19.6569 4 18 4"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M6 9C4.34315 9 3 7.88071 3 6.5C3 5.11929 4.34315 4 6 4"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                            <ellipse cx="12" cy="17" rx="6" ry="4" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                opacity="0.5"
-                                d="M20 19C21.7542 18.6153 23 17.6411 23 16.5C23 15.3589 21.7542 14.3847 20 14"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M4 19C2.24575 18.6153 1 17.6411 1 16.5C1 15.3589 2.24575 14.3847 4 14"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </div>
-                    <div class="ltr:ml-3 rtl:mr-3 font-semibold">
-                        <p class="text-xl dark:text-white-light">15</p>
-                        <h5 class="text-[#506690] text-xs">Rumah Sakit</h5>
-                    </div>
-                </div>
-                <div class="h-60">
-                    <apexchart height="auto" :options="followers" :series="followersSeries" class="absolute bottom-0">
-                        <!-- loader -->
-                        <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
-                        </div>
-                    </apexchart>
-                </div>
+                Bertugas
+                </h4>
             </div>
+            <div>
+                <div
+                class="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] shadow-[1px_2px_12px_0_rgba(31,45,61,0.10)] rounded-full border border-[#e0e6ed] dark:border-[#1b2e4b] flex justify-center flex-col"
+                >
+                <count-up class="text-primary text-xl sm:text-3xl text-center" :startVal="0" :end-val="105" :duration="7"></count-up>
+                </div>
+                <h4 class="text-[#3b3f5c] text-xs sm:text-[15px] mt-4 flex flex-col justify-center text-center dark:text-white-dark font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 flex mr-auto ml-auto" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3" y2="6"></line>
+                    <line x1="3" y1="12" x2="3" y2="12"></line>
+                    <line x1="3" y1="18" x2="3" y2="18"></line>
+                    </svg>
 
-            <div class="panel h-full p-0">
-                <div class="flex p-5">
-                    <div class="bg-danger/10 text-danger rounded-xl w-11 h-11 flex justify-center items-center dark:bg-danger dark:text-white-light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M10.0464 14C8.54044 12.4882 8.67609 9.90087 10.3494 8.22108L15.197 3.35462C16.8703 1.67483 19.4476 1.53865 20.9536 3.05046C22.4596 4.56228 22.3239 7.14956 20.6506 8.82935L18.2268 11.2626"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M13.9536 10C15.4596 11.5118 15.3239 14.0991 13.6506 15.7789L11.2268 18.2121L8.80299 20.6454C7.12969 22.3252 4.55237 22.4613 3.0464 20.9495C1.54043 19.4377 1.67609 16.8504 3.34939 15.1706L5.77323 12.7373"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </div>
-                    <div class="ltr:ml-3 rtl:mr-3 font-semibold">
-                        <p class="text-xl dark:text-white-light">25</p>
-                        <h5 class="text-[#506690] text-xs">Pengemudi</h5>
-                    </div>
-                </div>
-                <div class="h-60">
-                    <apexchart height="160" :options="referral" :series="referralSeries" class="w-full absolute bottom-0">
-                        <!-- loader -->
-                        <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
-                        </div>
-                    </apexchart>
-                </div>
+                Dikonfirmasi
+                </h4>
             </div>
+            <div>
+                <div
+                class="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] shadow-[1px_2px_12px_0_rgba(31,45,61,0.10)] rounded-full border border-[#e0e6ed] dark:border-[#1b2e4b] flex justify-center flex-col"
+                >
+                <count-up class="text-primary text-xl sm:text-3xl text-center" :startVal="0" :end-val="105" :duration="7"></count-up>
+                </div>
+                <h4 class="text-[#3b3f5c] text-xs sm:text-[15px] mt-4 flex flex-col justify-center text-center dark:text-white-dark font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 flex mr-auto ml-auto" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
 
-            <div class="panel h-full p-0">
-                <div class="flex p-5">
-                    <div class="bg-success/10 text-success rounded-xl w-11 h-11 flex justify-center items-center dark:bg-success dark:text-white-light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M10 22C14.4183 22 18 18.4183 18 14C18 9.58172 14.4183 6 10 6C5.58172 6 2 9.58172 2 14C2 15.2355 2.28008 16.4056 2.7802 17.4502C2.95209 17.8093 3.01245 18.2161 2.90955 18.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L5.39939 21.0904C5.78393 20.9876 6.19071 21.0479 6.54976 21.2198C7.5944 21.7199 8.76449 22 10 22Z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path
-                                opacity="0.5"
-                                d="M18 14.5018C18.0665 14.4741 18.1324 14.4453 18.1977 14.4155C18.5598 14.2501 18.9661 14.1882 19.3506 14.2911L19.8267 14.4185C20.793 14.677 21.677 13.793 21.4185 12.8267L21.2911 12.3506C21.1882 11.9661 21.2501 11.5598 21.4155 11.1977C21.7908 10.376 22 9.46242 22 8.5C22 4.91015 19.0899 2 15.5 2C12.7977 2 10.4806 3.64899 9.5 5.9956"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <g opacity="0.5">
-                                <path
-                                    d="M7.5 14C7.5 14.5523 7.05228 15 6.5 15C5.94772 15 5.5 14.5523 5.5 14C5.5 13.4477 5.94772 13 6.5 13C7.05228 13 7.5 13.4477 7.5 14Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M11 14C11 14.5523 10.5523 15 10 15C9.44772 15 9 14.5523 9 14C9 13.4477 9.44772 13 10 13C10.5523 13 11 13.4477 11 14Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M14.5 14C14.5 14.5523 14.0523 15 13.5 15C12.9477 15 12.5 14.5523 12.5 14C12.5 13.4477 12.9477 13 13.5 13C14.0523 13 14.5 13.4477 14.5 14Z"
-                                    fill="currentColor"
-                                />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="ltr:ml-3 rtl:mr-3 font-semibold">
-                        <p class="text-xl dark:text-white-light">87</p>
-                        <h5 class="text-[#506690] text-xs">Pemesanan</h5>
-                    </div>
-                </div>
-                <div class="h-60">
-                    <apexchart height="160" :options="engagement" :series="engagementSeries" class="w-full absolute bottom-0">
-                        <!-- loader -->
-                        <div class="min-h-[160px] grid place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span class="animate-spin border-2 border-black dark:border-white !border-l-transparent rounded-full w-5 h-5 inline-flex"></span>
-                        </div>
-                    </apexchart>
-                </div>
+                Menunggu
+                </h4>
             </div>
         </div>
+      
         <div
-            class="flex justify-center items-center md:flex-row flex-col"
+            class="flex justify-center items-center md:flex-col flex-col"
         >
-            
+            <div v-for="item in pemesanan" :key="item.id" class="mb-3 max-w-[45rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
+                <div class="py-7 px-6">
+                    <div class="flex flex-row justify-between align-items-center">
+                        <div>
+                            <h5 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light" v-if="item.status == 'selesai'">Telah selesai dari {{ item.lokasi }}</h5>
+                            <h5 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light" v-else-if="item.status == 'dikonfirmasi_sopir'">Menuju ke {{ item.lokasi }}</h5>
+                            <p class="text-white-dark">Kendaraan dengan Nomor Polisi {{ item.mobil.no_plat }} dari {{ item.rumah_sakit.nama }}.</p>
+                        </div>
+                        <div class="align-items-center">
+                            <button @click="lihatRute(item)"  type="button" v-tippy:button class="ml-5 btn btn-success">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"><path d="M20.9751 12.1852L20.2361 12.0574L20.9751 12.1852ZM20.2696 16.265L19.5306 16.1371L20.2696 16.265ZM6.93776 20.4771L6.19055 20.5417H6.19055L6.93776 20.4771ZM6.1256 11.0844L6.87281 11.0198L6.1256 11.0844ZM13.9949 5.22142L14.7351 5.34269V5.34269L13.9949 5.22142ZM13.3323 9.26598L14.0724 9.38725V9.38725L13.3323 9.26598ZM6.69813 9.67749L6.20854 9.10933H6.20854L6.69813 9.67749ZM8.13687 8.43769L8.62646 9.00585H8.62646L8.13687 8.43769ZM10.518 4.78374L9.79207 4.59542L10.518 4.78374ZM10.9938 2.94989L11.7197 3.13821L11.7197 3.13821L10.9938 2.94989ZM12.6676 2.06435L12.4382 2.77841L12.4382 2.77841L12.6676 2.06435ZM12.8126 2.11093L13.0419 1.39687L13.0419 1.39687L12.8126 2.11093ZM9.86194 6.46262L10.5235 6.81599V6.81599L9.86194 6.46262ZM13.9047 3.24752L13.1787 3.43584V3.43584L13.9047 3.24752ZM11.6742 2.13239L11.3486 1.45675L11.3486 1.45675L11.6742 2.13239ZM20.2361 12.0574L19.5306 16.1371L21.0086 16.3928L21.7142 12.313L20.2361 12.0574ZM13.245 21.25H8.59634V22.75H13.245V21.25ZM7.68497 20.4125L6.87281 11.0198L5.37839 11.149L6.19055 20.5417L7.68497 20.4125ZM19.5306 16.1371C19.0238 19.0677 16.3813 21.25 13.245 21.25V22.75C17.0712 22.75 20.3708 20.081 21.0086 16.3928L19.5306 16.1371ZM13.2548 5.10015L12.5921 9.14472L14.0724 9.38725L14.7351 5.34269L13.2548 5.10015ZM7.18772 10.2456L8.62646 9.00585L7.64728 7.86954L6.20854 9.10933L7.18772 10.2456ZM11.244 4.97206L11.7197 3.13821L10.2678 2.76157L9.79207 4.59542L11.244 4.97206ZM12.4382 2.77841L12.5832 2.82498L13.0419 1.39687L12.897 1.3503L12.4382 2.77841ZM10.5235 6.81599C10.8354 6.23198 11.0777 5.61339 11.244 4.97206L9.79207 4.59542C9.65572 5.12107 9.45698 5.62893 9.20041 6.10924L10.5235 6.81599ZM12.5832 2.82498C12.8896 2.92342 13.1072 3.16009 13.1787 3.43584L14.6306 3.05921C14.4252 2.26719 13.819 1.64648 13.0419 1.39687L12.5832 2.82498ZM11.7197 3.13821C11.7547 3.0032 11.8522 2.87913 11.9998 2.80804L11.3486 1.45675C10.8166 1.71309 10.417 2.18627 10.2678 2.76157L11.7197 3.13821ZM11.9998 2.80804C12.1345 2.74311 12.2931 2.73181 12.4382 2.77841L12.897 1.3503C12.3872 1.18655 11.8312 1.2242 11.3486 1.45675L11.9998 2.80804ZM14.1537 10.9842H19.3348V9.4842H14.1537V10.9842ZM14.7351 5.34269C14.8596 4.58256 14.824 3.80477 14.6306 3.0592L13.1787 3.43584C13.3197 3.97923 13.3456 4.54613 13.2548 5.10016L14.7351 5.34269ZM8.59634 21.25C8.12243 21.25 7.726 20.887 7.68497 20.4125L6.19055 20.5417C6.29851 21.7902 7.34269 22.75 8.59634 22.75V21.25ZM8.62646 9.00585C9.30632 8.42 10.0391 7.72267 10.5235 6.81599L9.20041 6.10924C8.85403 6.75767 8.30249 7.30493 7.64728 7.86954L8.62646 9.00585ZM21.7142 12.313C21.9695 10.8365 20.8341 9.4842 19.3348 9.4842V10.9842C19.9014 10.9842 20.3332 11.4959 20.2361 12.0574L21.7142 12.313ZM12.5921 9.14471C12.4344 10.1076 13.1766 10.9842 14.1537 10.9842V9.4842C14.1038 9.4842 14.0639 9.43901 14.0724 9.38725L12.5921 9.14471ZM6.87281 11.0198C6.84739 10.7258 6.96474 10.4378 7.18772 10.2456L6.20854 9.10933C5.62021 9.61631 5.31148 10.3753 5.37839 11.149L6.87281 11.0198Z" fill="currentColor"></path><path opacity="0.5" d="M3.9716 21.4709L3.22439 21.5355L3.9716 21.4709ZM3 10.2344L3.74721 10.1698C3.71261 9.76962 3.36893 9.46776 2.96767 9.48507C2.5664 9.50239 2.25 9.83274 2.25 10.2344L3 10.2344ZM4.71881 21.4063L3.74721 10.1698L2.25279 10.299L3.22439 21.5355L4.71881 21.4063ZM3.75 21.5129V10.2344H2.25V21.5129H3.75ZM3.22439 21.5355C3.2112 21.383 3.33146 21.2502 3.48671 21.2502V22.7502C4.21268 22.7502 4.78122 22.1281 4.71881 21.4063L3.22439 21.5355ZM3.48671 21.2502C3.63292 21.2502 3.75 21.3686 3.75 21.5129H2.25C2.25 22.1954 2.80289 22.7502 3.48671 22.7502V21.2502Z" fill="currentColor"></path></svg>
+                            </button>
+                            <tippy target="button">Lihat Rute</tippy>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+        <div class="mb-5">
+
+            <!-- Modal -->
+            <TransitionRoot appear :show="modalRute " as="template">
+                <Dialog as="div" @close="modalRute  = false" class="relative z-50">
+                <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100" leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
+                    <DialogOverlay class="fixed inset-0 bg-[black]/60" />
+                </TransitionChild>
+
+                <div class="fixed inset-0 overflow-y-auto">
+                    <div class="flex min-h-full items-start justify-center px-4 py-8">
+                    <TransitionChild
+                        as="template"
+                        enter="duration-300 ease-out"
+                        enter-from="opacity-0 scale-95"
+                        enter-to="opacity-100 scale-100"
+                        leave="duration-200 ease-in"
+                        leave-from="opacity-100 scale-100"
+                        leave-to="opacity-0 scale-95"
+                    >
+                        <DialogPanel class="panel border-0 p-0 rounded-lg overflow-hidden w-full max-w-lg text-black dark:text-white-dark">
+                        <button type="button" class="absolute top-4 ltr:right-4 rtl:left-4 text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 outline-none" @click="modalRute  = false">
+                            <svg> ... </svg>
+                        </button>
+                        <div class="text-lg font-bold bg-[#fbfbfb] dark:bg-[#121c2c] ltr:pl-5 rtl:pr-5 py-3 ltr:pr-[50px] rtl:pl-[50px]">Rute Perjalanan</div>
+                        <div class="p-5">
+                            <!-- <l-map 
+                                ref="map" 
+                                style="width: 100%; height:200px" 
+                                :zoom="maps.zoom" 
+                                :center="maps.center"
+                                
+                                >
+                                <l-tile-layer
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                ></l-tile-layer>
+
+                            </l-map> -->
+                            <div ref="mapContainer" class="map-container"></div>
+                            <div class="flex justify-end items-center mt-8">
+                            <button type="button" @click="modalRute  = false" class="btn btn-outline-danger">Tutup</button>
+                            <!-- <button type="button" @click="modalRute  = false" class="btn btn-primary ltr:ml-4 rtl:mr-4">Save</button> -->
+                            </div>
+                        </div>
+                        </DialogPanel>
+                    </TransitionChild>
+                    </div>
+                </div>
+                </Dialog>
+            </TransitionRoot>
+            </div>
     </section>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed } from 'vue';
+<script lang="ts">
+// import 'leaflet/dist/leaflet.css';
+// import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+// import L from 'leaflet';
+// import 'leaflet-routing-machine';
+    import { ref, computed, onMounted, defineComponent } from 'vue';
+    import axios from 'axios'
     import apexchart from 'vue3-apexcharts';
     import { useAppStore } from '@/stores/index';
     import { useMeta } from '@/composables/use-meta';
+    import CountUp from 'vue-countup-v3';
+    import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogOverlay } from '@headlessui/vue';
     // useMeta({ title: 'Widgets' });
 
-    const store = useAppStore();
- // followers
- const isDark1: boolean = store.theme === 'dark' ? true : false;
-    const followers = computed(() => {
-        const isDark: boolean = store.theme === 'dark' ? true : false;
-        return {
-            chart: {
-                height: 160,
-                type: 'area',
-                fontFamily: 'Nunito, sans-serif',
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 2,
-            },
-            colors: ['#4361ee'],
-            grid: {
-                padding: {
-                    top: 5,
-                },
-            },
-            yaxis: {
-                show: false,
-            },
-            tooltip: {
-                x: {
-                    show: false,
-                },
-                y: {
-                    title: {
-                        formatter: (val: any) => {
-                            return '';
+    export default defineComponent({
+        components: {
+            TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogOverlay, apexchart, CountUp
+        },
+        setup () {
+            const maps = ref({
+                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                attribution:
+                    '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 15,
+                center: [0.58373246046969, 123.03820610046388],
+                markerLatLng: [51.504, -0.159]
+            })
+            const coordinates = ref(null)
+            const store = useAppStore();
+    
+            const pemesanan = ref([])
+            const modalRute = ref(false)
+            const dataRute = ref({})
+            // const mapContainer = ref('');
+            // let map : any;
+            // const modal1 = ref(false);
+
+            
+            
+            onMounted(async () => {
+                try {
+                    getPemesanan()
+                } catch (error) {
+                    alert(error);
+                }
+            });
+    
+            // onMounted(() => {
+            //     map = L.map(mapContainer.value).setView([0, 0], 13);
+            //     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        
+            //     const waypoints = [
+            //         L.latLng(0.58373246046969, 123.03820610046388), // Ganti dengan koordinat titik awal
+            //         L.latLng(0.5913113, 123.0346689),     // Ganti dengan koordinat titik tujuan
+            //     ];
+        
+            //     L.Routing.control({
+            //         waypoints,
+            //     }).addTo(map);
+            // });
+    
+            const getPemesanan = async () =>{
+                let response = await axios.get('api/pemesanan')
+                pemesanan.value = response.data.data
+            }
+    
+            const lihatRute = (data) => {
+                dataRute.value = data
+                modalRute.value = true
+            }
+        // followers
+        const isDark1: boolean = store.theme === 'dark' ? true : false;
+            const followers = computed(() => {
+                const isDark: boolean = store.theme === 'dark' ? true : false;
+                return {
+                    chart: {
+                        height: 160,
+                        type: 'area',
+                        fontFamily: 'Nunito, sans-serif',
+                        sparkline: {
+                            enabled: true,
                         },
                     },
-                },
-            },
-            option: { fill: null },
-
-            if(isDark: boolean) {
-                option: {
-                    fill: {
-                        type: 'gradient';
-                        gradient: {
-                            type: 'vertical';
-                            shadeIntensity: 1;
-                            inverseColors: !1;
-                            opacityFrom: 0.3;
-                            opacityTo: 0.05;
-                            stops: [100, 100];
-                        }
-                    }
-                }
-            },
-        };
-    });
-
-    const followersSeries = ref([
-        {
-            data: [38, 60, 38, 52, 36, 40, 28],
-        },
-    ]);
-
-    // referral
-    const referral = computed(() => {
-        const isDark: boolean = store.theme === 'dark' ? true : false;
-        return {
-            chart: {
-                height: 160,
-                type: 'area',
-                fontFamily: 'Nunito, sans-serif',
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 2,
-            },
-            colors: ['#e7515a'],
-            grid: {
-                padding: {
-                    top: 5,
-                },
-            },
-            yaxis: {
-                show: false,
-            },
-            tooltip: {
-                x: {
-                    show: false,
-                },
-                y: {
-                    title: {
-                        formatter: (val: any) => {
-                            return '';
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2,
+                    },
+                    colors: ['#4361ee'],
+                    grid: {
+                        padding: {
+                            top: 5,
                         },
                     },
-                },
-            },
-
-            if(isDark: boolean) {
-                option: {
-                    fill: {
-                        type: 'gradient';
-                        gradient: {
-                            type: 'vertical';
-                            shadeIntensity: 1;
-                            inverseColors: !1;
-                            opacityFrom: 0.3;
-                            opacityTo: 0.05;
-                            stops: [100, 100];
-                        }
-                    }
-                }
-            },
-        };
-    });
-
-    const referralSeries = ref([
-        {
-            data: [60, 28, 52, 38, 40, 36, 38],
-        },
-    ]);
-
-    // engagement
-    const engagement = computed(() => {
-        const isDark: boolean = store.theme === 'dark' ? true : false;
-        return {
-            chart: {
-                height: 160,
-                type: 'area',
-                fontFamily: 'Nunito, sans-serif',
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 2,
-            },
-            colors: ['#1abc9c'],
-            grid: {
-                padding: {
-                    top: 5,
-                },
-            },
-            yaxis: {
-                show: false,
-            },
-            tooltip: {
-                x: {
-                    show: false,
-                },
-                y: {
-                    title: {
-                        formatter: (val: any) => {
-                            return '';
+                    yaxis: {
+                        show: false,
+                    },
+                    tooltip: {
+                        x: {
+                            show: false,
+                        },
+                        y: {
+                            title: {
+                                formatter: (val: any) => {
+                                    return '';
+                                },
+                            },
                         },
                     },
-                },
-            },
-
-            if(isDark: boolean) {
-                option: {
-                    fill: {
-                        type: 'gradient';
-                        gradient: {
-                            type: 'vertical';
-                            shadeIntensity: 1;
-                            inverseColors: !1;
-                            opacityFrom: 0.3;
-                            opacityTo: 0.05;
-                            stops: [100, 100];
+                    option: { fill: null },
+    
+                    if(isDark: boolean) {
+                        option: {
+                            fill: {
+                                type: 'gradient';
+                                gradient: {
+                                    type: 'vertical';
+                                    shadeIntensity: 1;
+                                    inverseColors: !1;
+                                    opacityFrom: 0.3;
+                                    opacityTo: 0.05;
+                                    stops: [100, 100];
+                                }
+                            }
                         }
-                    }
-                }
-            },
-        };
-    });
-
-    const engagementSeries = ref([
-        {
-            name: 'Sales',
-            data: [28, 50, 36, 60, 38, 52, 38],
-        },
-    ]);
+                    },
+                };
+            });
+    
+            const followersSeries = ref([
+                {
+                    data: [38, 60, 38, 52, 36, 40, 28],
+                },
+            ]);
+    
+            // referral
+            const referral = computed(() => {
+                const isDark: boolean = store.theme === 'dark' ? true : false;
+                return {
+                    chart: {
+                        height: 160,
+                        type: 'area',
+                        fontFamily: 'Nunito, sans-serif',
+                        sparkline: {
+                            enabled: true,
+                        },
+                    },
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2,
+                    },
+                    colors: ['#e7515a'],
+                    grid: {
+                        padding: {
+                            top: 5,
+                        },
+                    },
+                    yaxis: {
+                        show: false,
+                    },
+                    tooltip: {
+                        x: {
+                            show: false,
+                        },
+                        y: {
+                            title: {
+                                formatter: (val: any) => {
+                                    return '';
+                                },
+                            },
+                        },
+                    },
+    
+                    if(isDark: boolean) {
+                        option: {
+                            fill: {
+                                type: 'gradient';
+                                gradient: {
+                                    type: 'vertical';
+                                    shadeIntensity: 1;
+                                    inverseColors: !1;
+                                    opacityFrom: 0.3;
+                                    opacityTo: 0.05;
+                                    stops: [100, 100];
+                                }
+                            }
+                        }
+                    },
+                };
+            });
+    
+            const referralSeries = ref([
+                {
+                    data: [60, 28, 52, 38, 40, 36, 38],
+                },
+            ]);
+    
+            // engagement
+            const engagement = computed(() => {
+                const isDark: boolean = store.theme === 'dark' ? true : false;
+                return {
+                    chart: {
+                        height: 160,
+                        type: 'area',
+                        fontFamily: 'Nunito, sans-serif',
+                        sparkline: {
+                            enabled: true,
+                        },
+                    },
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2,
+                    },
+                    colors: ['#1abc9c'],
+                    grid: {
+                        padding: {
+                            top: 5,
+                        },
+                    },
+                    yaxis: {
+                        show: false,
+                    },
+                    tooltip: {
+                        x: {
+                            show: false,
+                        },
+                        y: {
+                            title: {
+                                formatter: (val: any) => {
+                                    return '';
+                                },
+                            },
+                        },
+                    },
+    
+                    if(isDark: boolean) {
+                        option: {
+                            fill: {
+                                type: 'gradient';
+                                gradient: {
+                                    type: 'vertical';
+                                    shadeIntensity: 1;
+                                    inverseColors: !1;
+                                    opacityFrom: 0.3;
+                                    opacityTo: 0.05;
+                                    stops: [100, 100];
+                                }
+                            }
+                        }
+                    },
+                };
+            });
+    
+            const engagementSeries = ref([
+                {
+                    name: 'Sales',
+                    data: [28, 50, 36, 60, 38, 52, 38],
+                },
+            ]);
+            return {
+                // mapContainer,
+                pemesanan,
+                modalRute,
+                engagementSeries,
+                engagement,
+                lihatRute,
+                followers,
+                followersSeries,
+                referral,
+                referralSeries,
+                dataRute,
+                TransitionRoot, 
+                TransitionChild, 
+                Dialog, 
+                DialogPanel, 
+                DialogOverlay,
+                CountUp,
+                apexchart
+            };
+            }
+            
+        })
 </script>
 
 <style>
-
+.map-container {
+  height: 400px;
+}
 </style>

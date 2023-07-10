@@ -174,6 +174,7 @@
                                 @dragstart="dragging = true"
                                 @dragend="dragging = false"
                                 >
+                                
                             </l-marker>
                         </l-map>
                     </div>
@@ -229,8 +230,9 @@
     import useClipboard from 'vue-clipboard3';
     import axios from 'axios'
     import Swal from 'sweetalert2';
-   
+    
     const router = useRouter();
+   
 
     declare var webkitSpeechRecognition: typeof SpeechRecognition;
 
@@ -279,7 +281,7 @@
                 center: [0.78566373548599999, 122.865568821],
                 markerLatLng: [51.504, -0.159]
             })
-    
+            
             let lastMessageCreatedAt: string | undefined;
             sharedMessages.observe(() => {
             messages.value = sharedMessages.toJSON();

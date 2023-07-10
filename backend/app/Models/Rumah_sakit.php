@@ -16,6 +16,11 @@ class Rumah_sakit extends Model
         return $this->hasMany(Mobil::class,'rumah_sakit_id');
     }
 
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class,'rumah_sakit_id');
+    }
+
     public function distanceTo($lat, $lng)
     {
         $earthRadius = 6371; // Radius bumi dalam kilometer

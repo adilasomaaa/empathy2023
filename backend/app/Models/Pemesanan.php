@@ -13,6 +13,11 @@ class Pemesanan extends Model
 
     public function verifikasi_pemesanan()
     {
-        return $this->hasMany(VerifikasiPemesanan::class,'verifikasi_pemesanan_id');
+        return $this->hasOne(VerifikasiPemesanan::class,'pemesanan_id');
+    }
+
+    public function rumah_sakit()
+    {
+        return $this->belongsTo(Rumah_sakit::class,'rumah_sakit_id');
     }
 }

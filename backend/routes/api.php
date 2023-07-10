@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PemesananController;
@@ -23,10 +24,13 @@ Route::get('/auth', [AuthController::class, 'getUser']);
     // Route::get('/permissions', [AuthController::class, 'getAllPermissions']);
 });
 
+Route::prefix('dashboard')->group(function () {
+    Route::get('all_count', [DashboardController::class, 'all_count']);
+});
+
 Route::get('coba', [PemesananController::class, 'coba']);
 // rumah_sakit
 Route::apiResource('rumah_sakit',RumahSakitController::class);
-
 // user
 Route::apiResource('user',UserController::class);
 // operator

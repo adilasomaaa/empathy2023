@@ -28,6 +28,15 @@ class PemesananController extends Controller
         ], 200);
     }
 
+    public function byNama($nama)
+    {
+        $data = Pemesanan::where('nama', $nama)->first();
+        return response()->json([
+            'info' => 'seccess',
+            'data' => PemesananResource::make($data)
+        ], 200);
+    }
+
     public function byRumah_sakit($rumah_sakit_id)
     {
         $data = Pemesanan::where('rumah_sakit_id', $rumah_sakit_id)->get();

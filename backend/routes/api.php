@@ -48,6 +48,7 @@ Route::prefix('pemesanan')->group(function(){
     Route::get('{rumah_sakit_id}/byRumah_sakit', [PemesananController::class, 'byRummah_sakit']);
     Route::put('{pemesanan}/setStatus', [PemesananController::class, 'setStatus']);
     Route::put('{status}/byStatus', [PemesananController::class, 'byStatus']);
+    Route::put('{nama}/byNama', [PemesananController::class, 'byNama']);
 });
 
 Route::get('verifikasi/{pemesanan_id}/byPemesanan', [VerifikasiPemesananController::class ,'byPemesanan']);
